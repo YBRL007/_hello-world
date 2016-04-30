@@ -427,6 +427,362 @@ line breaks.
   </table>
 </div>
 
+<div class="container">
+  <h2>Table</h2>
+  <p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>                                                                                      
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Age</th>
+        <th>City</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Anna</td>
+        <td>Pitt</td>
+        <td>35</td>
+        <td>New York</td>
+        <td>USA</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Rounded Corners</h2>
+  <p>The .img-rounded class adds rounded corners to an image (not available in IE8):</p>            
+  <img src="cinqueterre.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236"> 
+</div>
+
+<div class="container">
+  <h2>Circle</h2>
+  <p>The .img-circle class shapes the image to a circle (not available in IE8):</p>            
+  <img src="cinqueterre.jpg" class="img-circle" alt="Cinque Terre" width="304" height="236"> 
+</div>
+
+<div class="container">
+  <h2>Thumbnail</h2>
+  <p>The .img-thumbnail class creates a thumbnail of the image:</p>            
+  <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+</div>
+
+<div class="container">
+  <h2>Image</h2>
+  <p>The .img-responsive class makes the image scale nicely to the parent element (resize the browser window to see the effect):</p>
+  <img class="img-responsive" src="img_chania.jpg" alt="Chania" width="460" height="345"> 
+</div>
+
+<div class="container">
+  <h2>Image Gallery</h2>
+  <p>The .thumbnail class can be used to display an image gallery. Click on the images to see it in full size:</p>            
+  <div class="row">
+    <div class="col-md-4">
+      <a href="pulpitrock.jpg" class="thumbnail">
+        <p>Pulpit Rock: A famous tourist attraction in Forsand, Ryfylke, Norway.</p>    
+        <img src="pulpitrock.jpg" alt="Pulpit Rock" style="width:150px;height:150px">
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="moustiers-sainte-marie.jpg" class="thumbnail">
+        <p>Moustiers-Sainte-Marie: Considered as one of the "most beautiful villages of France".</p>
+        <img src="moustiers-sainte-marie.jpg" alt="Moustiers Sainte Marie" style="width:150px;height:150px">
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="cinqueterre.jpg" class="thumbnail">
+        <p>The Cinque Terre: A rugged portion of coast in the Liguria region of Italy.</p>      
+        <img src="cinqueterre.jpg" alt="Cinque Terre" style="width:150px;height:150px">
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Responsive Embed</h2>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
+  </div>
+</div>
+
+<!-- 16:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="..."></iframe>
+</div>
+
+<!-- 4:3 aspect ratio -->
+<div class="embed-responsive embed-responsive-4by3">
+  <iframe class="embed-responsive-item" src="..."></iframe>
+</div>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Bootstrap Tutorial</h1>      
+    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+  </div>
+  <p>This is some text.</p>      
+  <p>This is another text.</p>      
+</div>
+
+<div class="jumbotron">
+  <h1>Bootstrap Tutorial</h1>      
+  <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+</div>
+
+<div class="container">
+  <p>This is some text.</p>      
+  <p>This is another text.</p>      
+</div>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Example Page Header</h1>      
+  </div>
+  <p>This is some text.</p>      
+  <p>This is another text.</p>      
+</div>
+
+<div class="container">
+  <h2>Well</h2>
+  <div class="well">Basic Well</div>
+</div>
+
+<div class="container">
+  <h2>Well Size</h2>
+  <div class="well well-sm">Small Well</div>
+  <div class="well">Normal Well</div>
+  <div class="well well-lg">Large Well</div>
+</div>
+
+<div class="container">
+  <h2>Alerts</h2>
+  <div class="alert alert-success">
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+  <div class="alert alert-info">
+    <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
+  </div>
+  <div class="alert alert-warning">
+    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+  </div>
+  <div class="alert alert-danger">
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  </div>
+</div>
+
+<div class="container">
+  <h2>Alerts</h2>
+  <p>The a element with class="close" and data-dismiss="alert" is used to close the alert box.</p>
+  <div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+  <div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
+  </div>
+  <div class="alert alert-warning">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+  </div>
+  <div class="alert alert-danger">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  </div>
+</div>
+
+<div class="container">
+  <h2>Alerts</h2>
+  <p>The .fade and .in classes adds a fading effect when closing the alert message.</p>
+  <div class="alert alert-success fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+  <div class="alert alert-info fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
+  </div>
+  <div class="alert alert-warning fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+  </div>
+  <div class="alert alert-danger fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  </div>
+</div>
+
+<div class="container">
+  <h2>Button Styles</h2>
+  <button type="button" class="btn btn-default">Default</button>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-link">Link</button>      
+</div>
+
+<div class="container">
+  <h2>Button Tags</h2>
+  <a href="#" class="btn btn-info" role="button">Link Button</a>
+  <button type="button" class="btn btn-info">Button</button>
+  <input type="button" class="btn btn-info" value="Input Button">
+  <input type="submit" class="btn btn-info" value="Submit Button">
+</div>
+
+<div class="container">
+  <h2>Button Sizes</h2>
+  <button type="button" class="btn btn-primary btn-lg">Large</button>
+  <button type="button" class="btn btn-primary btn-md">Medium</button>    
+  <button type="button" class="btn btn-primary btn-sm">Small</button>
+  <button type="button" class="btn btn-primary btn-xs">XSmall</button>
+</div>
+
+<div class="container">
+  <h2>Block Level Buttons</h2>
+  <button type="button" class="btn btn-primary btn-block">Button 1</button>
+  <button type="button" class="btn btn-default btn-block">Button 2</button>
+
+  <h2>Large Block Level Buttons</h2>
+  <button type="button" class="btn btn-primary btn-lg btn-block">Button 1</button>
+  <button type="button" class="btn btn-default btn-lg btn-block">Button 2</button>
+
+  <h2>Small Block Level Buttons</h2>
+  <button type="button" class="btn btn-primary btn-sm btn-block">Button 1</button>
+  <button type="button" class="btn btn-default btn-sm btn-block">Button 2</button>
+</div>
+
+<div class="container">
+  <h2>Button States</h2>
+  <button type="button" class="btn btn-primary">Primary Button</button>
+  <button type="button" class="btn btn-primary active">Active Primary</button>
+  <button type="button" class="btn btn-primary disabled">Disabled Primary</button>
+</div>
+
+<div class="container">
+  <h2>Button Group</h2>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary">Apple</button>
+    <button type="button" class="btn btn-primary">Samsung</button>
+    <button type="button" class="btn btn-primary">Sony</button>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Button Groups - Set Sizes</h2>
+  <p>Add class .btn-group-* to size all buttons in a button group.</p>
+  <h3>Large Buttons:</h3>
+  <div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-primary">Apple</button>
+    <button type="button" class="btn btn-primary">Samsung</button>
+    <button type="button" class="btn btn-primary">Sony</button>
+  </div>
+  <h3>Extra Small Buttons:</h3>
+  <div class="btn-group btn-group-xs">
+    <button type="button" class="btn btn-primary">Apple</button>
+    <button type="button" class="btn btn-primary">Samsung</button>
+    <button type="button" class="btn btn-primary">Sony</button>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Vertical Button Group</h2>
+  <div class="btn-group-vertical">
+    <button type="button" class="btn btn-primary">Apple</button>
+    <button type="button" class="btn btn-primary">Samsung</button>
+    <button type="button" class="btn btn-primary">Sony</button>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Justified Button Groups</h2>
+  <div class="btn-group btn-group-justified">
+    <a href="#" class="btn btn-primary">Apple</a>
+    <a href="#" class="btn btn-primary">Samsung</a>
+    <a href="#" class="btn btn-primary">Sony</a>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Justified Button Groups</h2>
+  <div class="btn-group btn-group-justified">
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary">Apple</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary">Samsung</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary">Sony</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Nesting Button Groups</h2>
+  <p>Nest button groups to create drop down menus:</p>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary">Apple</button>
+    <button type="button" class="btn btn-primary">Samsung</button>
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Sony <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Tablet</a></li>
+        <li><a href="#">Smartphone</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Split Buttons</h2>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary">Sony</button>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Tablet</a></li>
+      <li><a href="#">Smartphone</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Glyphicon Examples</h2>
+  <p>Envelope icon: <span class="glyphicon glyphicon-envelope"></span></p>    
+  <p>Envelope icon as a link:
+    <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
+  </p>
+  <p>Search icon: <span class="glyphicon glyphicon-search"></span></p>
+  <p>Search icon on a button:
+    <button type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-search"></span> Search
+    </button>
+  </p>
+  <p>Search icon on a styled button:
+    <button type="button" class="btn btn-info">
+      <span class="glyphicon glyphicon-search"></span> Search
+    </button>
+  </p>
+  <p>Print icon: <span class="glyphicon glyphicon-print"></span></p>      
+  <p>Print icon on a styled link button:
+    <a href="#" class="btn btn-success btn-lg">
+      <span class="glyphicon glyphicon-print"></span> Print 
+    </a>
+  </p> 
+</div>
+
+
 
 </body>
 </html>
