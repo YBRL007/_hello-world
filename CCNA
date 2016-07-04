@@ -1,1 +1,294 @@
+Basic Intro to CCNA
 
+  .Outline the fundeamentals of networking and TCP/IP
+  .Define Spanning Tree Protocol (STP) and EtherChannel
+  .Describe VLAN and Inter-VLAN Routing
+  .Describe IPv4 addressing and IOS liscencing
+  .Describe the managing of CISCO Internetnetwork and devices
+  .Describe the configuration and troubleshooting of OSPF, EIGRP, and IPv6
+  .Define Wide Area Networks (WAN)
+  
+Lesson 1-6
+  .Internetworking
+  .Fundamentals of Netowrking
+  .Inroduction to Transmission Control Protocol/Internet Protocol (TCP/IP) layers 734 IOS model
+  .IPv4 Addressing and Subnetting
+  .VLSMs, Summarizaization, and Troubleshooting TCP/IP
+  .Cisco's Internetworking Operating System (IOS)
+  
+Lesson 7-11
+  .Managing a Cisco Internetwork
+  .Internet Protocol Routing
+  .Managing Cisco Devices
+  .Layer 2 Switching
+  .VLANs and InterVLAN Routing
+  
+Lesson 12-16
+  .Spanning Tree Protocol and EtherChannel
+  .Security
+  .Network Address Translation
+  .Internet Protocol Version 6 (IPvP)
+  .DHCP, NTP, and High Availability
+  
+Lesson 17-21
+  .Enhanced Interior Gateway Routing Protocol (EIGRP)
+  .Open Shortest Path First (OSPF)
+  .Advanced Open Shortest Path First
+  .Wide Area Networks (WANs)
+  .Troubleshooting
+  
+---------------------------------------------------------------------------------------------------------------
+Internetworking-
+
+Objectives !
+
+  .Explain internetworking models
+  .List the types of internetworking models
+  .Discuss the OSI Reference Model and its layer
+  .Describe the role of different devices that comprise a network
+  
+-------------------------------------------------------------------------------------------------------
+Network-
+
+  .A network is collection of devices that are connected through media. The characteristics of a network are as follows:
+    
+    .Devices contain services and resources.
+    .Network connects users to the available services.
+    .Connecting devices allow users to share resources more efficiently.
+    
+Internetworking Models
+
+  .With the inception of networks, hardware and software from different manufacturers could not interoperate. To build hardware and software that can interoperate, a model with communication functions is required.
+  
+    .Importance of Internetworking Models
+      .They encourage interoperability
+      .Models provide a reference to describe the process of data communication
+      .Models Facilitate modular engineering (high layer - low layer)
+      
+Types of Networking Models
+
+  .Open Systems Interconnection (OSI) reference model
+  .Transmission Control Protocol/ Internet Protocol (TCP/IP) model
+  
+OSI Reference Model was developed by the International Standards Organization (ISO). The 7 layers of (OSI) Reference Model are as follows:
+
+  .User
+    .Layer 7
+      Application
+    .Layer 6
+      Presentation
+    .Layer 5
+      Session
+    .Layer 4
+      Transport
+    .Layer 3
+      Network
+    .Layer 2
+      Data Link
+    .Layer 1
+      Physical (copper cable)
+
+!!!! Layers represent processing that must be communicated through the data !!!!
+  
+Layer Responsibilities And Encapsulation
+
+Layer                     Function                            Name of Datagram
+---------------------------------------------------------------------------------------
+7                         User interaction                    Data
+6                         Data format and encryption          Data
+5                         Manage end-to-end communication     Data
+4                         Add source and destination port
+                          number or reliable communication,
+                          also add sequence number. Provide
+                          flow control, sequencing, and 
+                          reliability                         Segement
+3                         Add source and destination IP 
+                          Determine best path to a 
+                          destination                         Packet
+2                         Add source and Destination MAC
+                          addresses and FCS                   Frame
+1                         Bits over the physical medium       Bits and Bytes
+
+Network Devices
+
+                                  Router
+                          Switch            Switch
+          PC          Printer       Sever      Desktop      Laptop
+          
+Routers
+  
+  .Routers are Layers 3 devices and they perform the following functions in a network:
+    .Packet switching
+      The process of getting a packet to the next device
+    .Packet filtering
+      Permitting or blocking packets based on defined criteria
+    .Path selecting
+      Determining the best path to take through the network to a destination
+    .Communicating
+      Communicating with other networks, for example, the internet
+
+Switches
+  .Switches are Layer 2 devices and they perform the following functions in a network:
+    .Frame forwarding 
+    .Frame filtering
+    .Connecting end devices to the network
+-------------------------------------------------------------------------------------------------
+Quiz
+
+Which of the following options in not true?
+
+  a) A frame contains IP address
+  b) A packet contains IP address
+  c) A segment contains MAC address
+  d) A packet contains MAC address
+  
+Which of the following OSI layers is responsible for user interaction?
+
+  a) L1
+  b) L5
+  c) L2
+  d) L7
+  
+Which of the following is a function carried out at layer 7 of the OSI model?
+
+  a) Email
+  b) Data translation and code formatting
+  c) Transmitting bits over the media
+  d) Determining best path
+  
+Which of the following OSI layers is responsible for adding source and destination IP addresses?
+
+  a) L3
+  b) L5
+  c) L2
+  d) L7
+  
+Which of the following options is responsible for packet forwarding?
+
+  a) Switch
+  b) Router
+  c) Hub
+  d) End device
+  
+--------------------------------------------------------------------------------------------------
+
+Fundamentals of Networking
+
+Objectives !
+  .Identify network topogies
+  .Describe the Cisco Hierarchical Network Model
+  .Explain Ethernet technologies at Layer 1 and Layer 2
+  .Describe the Ethernet Layer 2 Frame
+  .Explain full half duplex and CSMA/CD
+---------------------------------------------------------------------------------------------------------
+Network Topology
+  .Network topology deals with how devices are connected (search for a chart as refrence)
+  .The different network topologies are as shown below.
+    .Point-to-Point Topology
+    .Bus Topology
+    .Ring Topology
+    .Star Topology
+    .Full Mesh Topology
+    .Partial Mesh Topology
+
+Point-to-Point Topology
+  .In a point-to-point topology, only 2 devices are connected to each other through the medium. This 
+  is typical in Wide Area Network (WAN) connections.
+  
+          DEVICE A .---------------------------------. DEVICE B
+
+Bus Topology
+  In bus topology, all device are attached to a single cable. This was used for Token Ring networks.
+  
+  
+  CABLE------------------------------------------------------------------------------------------
+              ^                             ^                                   ^
+          Device A                      Device B                            Device C
+
+Ring Topology
+  .In a ring toplogy, each device is attached to only one other device either side. This is often used
+  with severs.
+  
+                        Device A                      Device D
+                                        O
+                        Device B                      Device C
+
+Star Topology
+  .In a star topology, multiple devices are connected to a central device. This is the most widespread topology
+  in networks today.
+  
+  PC-A---------------------------|                      |----------------------------PC-B
+                                        
+                                        Switch
+  
+  PC-C---------------------------|                      |----------------------------PC-D
+  
+  Full Mesh Topology
+    .In full mesh toplogy, all the device are interconnected. There are many backup paths from one
+    device to another.
+    
+    Device A -                                                  - Device D
+    
+                                  X
+    
+    Device B -                                                  - Device C
+  
+Partial Mesh
+  .In a partial mesh topology, some of the full mesh connections are dropped. This makes is less
+  expensive and easier to implement.
+  
+    1........2
+                } interconnected devices
+    3........4
+    |         |  
+  Device A-B  Device C-D
+  
+Hierarchical Network Model
+  .the hierarchical network model can help accomplish the goals of anetwork. Networks should have the following qualities:
+    .Modular
+      adding to the network does not require redesigning
+    .Resilient
+      The network can recover quickly from a node failure
+    .Flexiable
+      Modifying the network is faster and easier
+Contd.
+
+                Core X2
+                Distribution X2---------------O--Router for WAN connection
+                Access X2
+            |       |           |                     
+          Server  IP phone    Wireless Access Point   
+          !!!! LAYER 2 and LAYER 3 connection !!!!
+
+Layer Requirements 
+  .The different layers and their requirements are given below:
+  
+  Layers                                      Requirements
+  
+  Core                                        .It has high bandwidth links.
+                                              .It connects the distribution layer device to each other and 
+                                              the centralized resource.
+                                              .It consists of high-end switches
+  
+  Distribution                                .It provides routing, packet filtering using Access Control List
+                                              (ACL's), and Quality of Service (QoS).
+                                              .WAN access also occurs at this layer.
+                                              .Routers and Layer 3 switches are used here.
+                                              
+  Access                                      .End devices connect to the network, usually with a switch.
+  
+  Layer 1 and 2 ethernet
+    .Ethernet is the most widely used technology for Local Area Networks (LANs) today.
+    It is a FAMILY of standards maintained by the Institute of Electrical Engineers (IEEE) defined into
+    two OSI model layers:
+                                    Layer 1 (physical)
+    OSI Model Layers-----------------|
+                                    Layer 2 (data Link)
+                                    
+  IEEE Ethernet standards are given below:
+  
+                                                                 IEEE Ethernet Standards
+                                      Typical LAN                                             Media
+                                          |                                                     |  
+    10 mbps-ethernet     100 mbps Fast Ethernet     1 Gbps- GigabitEthernet       Copper Cables     Fiber   Wireless
+    
