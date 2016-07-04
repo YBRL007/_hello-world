@@ -58,7 +58,8 @@ Network-
     
 Internetworking Models
 
-  .With the inception of networks, hardware and software from different manufacturers could not interoperate. To build hardware and software that can interoperate, a model with communication functions is required.
+  .With the inception of networks, hardware and software from different manufacturers could not interoperate. 
+  To build hardware and software that can interoperate, a model with communication functions is required.
   
     .Importance of Internetworking Models
       .They encourage interoperability
@@ -70,7 +71,8 @@ Types of Networking Models
   .Open Systems Interconnection (OSI) reference model
   .Transmission Control Protocol/ Internet Protocol (TCP/IP) model
   
-OSI Reference Model was developed by the International Standards Organization (ISO). The 7 layers of (OSI) Reference Model are as follows:
+OSI Reference Model was developed by the International Standards Organization (ISO). The 7 layers of (OSI) 
+Reference Model are as follows:
 
   .User
     .Layer 7
@@ -292,3 +294,164 @@ Layer Requirements
                                           |                                                     |  
     10 mbps-ethernet     100 mbps Fast Ethernet     1 Gbps- GigabitEthernet       Copper Cables     Fiber   Wireless
     
+Ethernet at the Physical Layer
+  .There are many physical layers in the Ethernet standards. However, they use the same data link layer standards.
+    .The maximum length of a copper cable is 100 meters (about 328 feet) for most standards.
+    .The standards listed for copper use Unshielded Twisted Pair (UTP) copper cable, expect Thicknet.
+      !!!! Characteristics of Ethernet !!!!
+        .The UTP cable used contains 4 pairs of wires
+        .Only 2 of the pairs are used for Ethernet and FastEthernet
+        .All 4 pairs are used for GigabitEthernet
+
+Ethernet Data Link Layer
+  !!!! The IEEE splits the Ethernet data link layer into two sublayers !!!!
+
+                                    Sublayers
+                            |                           |
+            802.3 Media Access Control (MAC)      802.2 Logical Link Control (LLC)
+                            |                           |
+    Responsible for data encapsulation and          Handles communication within Layers 1 and 3
+    addressing.
+    
+Media Access Control Address
+  .The Media Access Control (MAC) address is the physical address of the Network INterface Card (NIC).
+  it consists of 48 bits (6 bytes) respresented in hexadecimal digits.
+    .The first 3 bytes are the Organizantionally Unique Identifier (OUI) that indicates the vendor.
+    .The last 3 bytes are assigned by the vendor.
+  !!!! this address can be assigned or it can be a Burned-In-Address (BIA) !!!!
+  
+Ethernet Frame
+  .The fields and functions of Ethernet Frame are shown below.
+  
+  Fields                                            Functions
+--------------------------------------------------------------------------------------------------
+  Preamble                                          Provides sychronization.
+  Start Frame Delimiter                             Signals the beginning of address
+  MAC Destination Address                           This is the destination of the frame
+  MAC Source Address                                This is the source of the frame
+  Protocol Type                                     This usually the code for IPv4 (0x0800) or IPv6 (0x86DD).
+  Data                                              It contains Layer 1 bytes. Padding is added to meet the minimum 46-byte
+                                                    requirement, if necessary.
+  Frame Check Sequence (FCS)                        This is used to check for transmission errors.
+  
+Duplex
+  .Devices communicate with each other using full or half duplex.
+  
+  ! Half duplex !
+    .Only one device can transmit over the medium at a time.
+    .Data collisions are possible with half duplex.
+    
+  ! Full duplex !
+    .Both devices can trasmit and recieve at the same time.
+    .Switches and router can use full duplex.
+
+Carrier Sense Multiple Access with Collision Detection
+  .To detect collisions in half duplex communication, Carrier Sense Multiple Access with Collision
+  Detection (CSMA/CD) is used. This is a contention method.
+    .When a device has a frame to transmit, it monitors until there is no activity on the medium.
+    .It sends the frame, but also listens at the same time.
+    .If the devcie detects other signals on the medium, there is a collision.
+    .In case of a collision, all devices transmitting at that time send a jamming signal. Each then
+    chooses a random amount of time before retransmitting. This called the backoff time.
+    
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Quiz
+
+When a collison occurs on an Ethernet link, the source waits the__________before retransmitting.
+  a) backoff time
+  b) carrier sense
+  c) forward delay
+  d) jamming
+
+The contention method used Ethernet is called_________.
+
+  a) token passing
+  b) CSMA/CD
+  c) polling
+  d) CSMA/CA
+
+Hubs_________use full duplex.
+
+  a) sometimes
+  b) always
+  c) rarely
+  d) never
+  
+The frame check sequence is used to_________.
+
+  a) check for transmisson errors
+  b) establish the window size
+  c) create an OUI
+  d) transmit the MAC address
+  
+  A vendor-assigned MAC address is called a(n)_______.
+    a) OUI
+    b) BIA
+    c) MAC
+    d) FCS
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Intro to TCIP IP
+
+  Objectives !
+    .Discuss layer 7 application types and protocols
+    .Describe the operation of TCP and UDP
+    .Explain the purpose of ICMP and ARP
+    .Describe IPV4 header
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Layer 7 Application Types
+  .Table illustrates the characteristics of the three application types in layer 7.
+  
+                Interactive application                         Batch application                           Real-time application
+        ----------------------------------------------------------------------------------------------------------------------------
+Action  |  You enter data, then wait for a response. | you enter command(s), and do not wait for a | There is person-to-person real
+                                                      response.                                     -time interaction.
+Important | Response time is important but not       | Bandwidth is important but not critical.     | end-to-end latency is critical.   
+/critical   critical.
+factor
+
+Example   | An example of an interactive application | An example of batch application is file      | Examples of real-time application
+            is a web search engine.                   transfer.                                       are VoIP and video conferencing.
+
+
+Performance Requirements
+  .The different ways to measure the quailty of data communicationcations are as follows:
+    .Delay- Measures how quickly a response form input is expected
+    .Loss tolerant- Assume that in the case of interactive and batch applications the data would be retransmitted
+    .Jitter- Concerns the variation in delay
+
+Protocols for File Transfer and Remote Access
+  .The table provides details of different protocols used for file transfer and remote access.
+  
+  Protocol Name         |             Port Number             |             Function                                |
+---------------------------------------------------------------------------------------------------------------------
+Telnet Protocol         |           TCP port 23               | It provides access to another device remotely. It
+                                                                uses plain text.
+Secure Shell            |           TCP port 22               | It allows remote access, but provides encryption.
+File Transfer Protocol  |           TCP port 20 & 21          | They are transfer files. FTP also allows access to
+                                                                both directories and files.
+Trivial File Transfer   |           TCP port 69               | It is simplified files. FTP also allows access to both directories
+Protocol                                                        and files.
+Hypertext Transfer      |           TCP/UDP port 80 & 8080    | It manages communications between web browsers and web servers.
+Protocol
+Hypertext Transfer      |           TCP port 443              | It manages communications between web browsers and web severs. 
+Protocol/ Secure
+Sockets Layer
+
+Protocols for Network Services
+  .The table provides details of different protocols used for network services.
+
+      Protocol Name     |           Port Number               |               Function                                            |
+---------------------------------------------------------------------------------------------------------------------------------
+Simple Network Management|        UDP port 161                |       It is a network device manager.                             |
+Protocol
+Network Time Protocol   |         UDP port 123                |     It synchronizes the clocks to one standard time source.       |
+Domain Name Service     |         TCP/UDP port 53             |     It resolves hostnames. It translates between Fully Qualified
+                                                                    Domain Names (FQDN) and IP address.
+Dynamic Host 
+Configuration Protocol  |       UDP port 67 for sever, 68     |     It assigns IP address to devices on the network.
+                                for client
+
+Layer 4: Transport Layer  
