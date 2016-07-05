@@ -455,3 +455,241 @@ Configuration Protocol  |       UDP port 67 for sever, 68     |     It assigns I
                                 for client
 
 Layer 4: Transport Layer  
+  .Data from higher layers are broken into segements for efficient transmission. 
+    .Main protocols used at Layer 4
+      -Transmission Control Protocol (TCP)
+        .Keeps track of segement that have matching source and destination port numbers
+        .Provides reliable transport of the segment.
+      -User Datagram Protocol (UPD) 
+        .Does not provide reliable transport.
+        .Is faster than TCP because acknowledgement is not required
+
+Transmission Control Protocol Header
+
+  .A TCP header contains the following fields, among others:
+    .Source and destination port numbers,
+    .Sequence number,
+    .Acknowledgement number,
+    .Window size, and
+    .Checksum.
+  
+  Each segment is assigned a sequence number. The sequence numbers are used:
+    .To determine any segment that require retransmission.
+    .To reassemble the segment in order, at the destination.
+
+
+Transmission Control Protocol
+  .Is a 3-way "handshake" which is the beginning of a TCP connection.
+    1. SYN - the source sends the sequence number
+    2. SYN/ACK - acknowledeges the number andis ready for another one
+    3. ACK - the source tells the destination to keep transmitting.
+    
+Windowing
+  .Is a process used by TCP to contrl how much data is sent at once.
+    !!!! If there is large amounts of traffic the window is made smaller !!!!
+    !!!! If the bandwidth is available the window is increased !!!!
+
+User Datagram Protocol
+
+                                                        UDP Header Fields
+                                    Source Port (16 bits)           |           Destination Ports (16 bits)
+                                    Length (16 bits)                |           Checksum (16 bits)
+                                                                   DATA
+
+  UDP is used when:
+    .reliable transport is not necessary, for example, when looking up a DNS name.
+    .the delay introduced by TCP is unacceptable, for example, in Voice over IP (VoIP).
+  
+Port Numbers
+  .Assigning of port numbers are as followed
+    0 - 1023          | Well-known ports
+    1024 - 49151      | Registered ports
+    49152 - 65535     | Private or dynamic ports
+      
+      !!!! TCP and UDP both use port numbers as address !!!!
+      !!!! Dynamic ports are used to allocate ephemeral ports !!!!
+      !!!! Well-Known or registered ports are used for destination ports !!!!
+      
+Layers 3 Protocols
+  .Layer 3 adds an Internet Protocol version 4 (IPv4) or Internet Protocol version 6 (IPv6) source
+  and destination address to the segement recieved from Layer 4.
+    . IP source and Destination address are the logical address for a device or router interface.
+    . This compares to the physical addresses that are used at Layer 2.
+    
+  Other important protocols at Layer 3 for IPv4 are:
+    .Internet Control Message Protocol (ICMP)
+    .Address Resolution Protocol (ARP)
+    
+Address Resolution Protocol (ARP)
+
+      !!!! ARP request message sent out !!!!
+      .Looking for the physical (MAC) address of anode with IP address is:
+      192.168.1.120
+      
+Router/Host (ARP request)
+  IP: 192.168.1.110
+  IP: 192.168.1.120
+  IP: 192.168.1.130
+  
+                                                IP: 192.168.1.110
+  Router/Host        (ARP reply) -----------    IP: 192.168.1.120
+                      Physical Address is       IP: 192.168.1.130
+                      02-FE-05-A7-00-01
+
+Internet Protocol Version 4 Header
+  !!!! different headers of Internet Protocol Version 4 (IPv4) !!!!
+  
+  | IP Version No. 4 | IHL (4 bits) | Type of Service (8 bits)  | Total Length (16 bits)|
+  | Identification (16 bits) |          Flags (4 bits)    |    Fragment offset (12 bits)|
+  | Time to Live (8 bits)    |      Protocol (8 bits)     |    Header Checksum (16 bits)|
+  |                               Source Address (32 bits)                              |
+  |                               Destination Address (32 bits)                         |
+  | Options (variable)                        |               Padding (variable)        |
+  
+  !!!! (IPv4) TTL and bits concerning fragmentation feild and function of IPv4 !!!!
+    .If the number of bytes in the data, causes the packet to be too big to send to the network, it is fragmented. 
+    (meaning it is sent in more than one IP packet)
+    .When a packet arrives at a router, the router decriments the TTL field by 1, When the TTL feild is 0 the router discards the packet
+    .TTL prevents the packets from looking for a none exsisting address indefinitly.
+    .Without TTL there would be many packets taken up bandwidth.
+    
+Layer 2 Protocol
+  .Addressing used at layer 2 is flat.
+  .There is no hierarchy involved.
+  
+                                            Layer 2 Protocols
+                                                  |
+              |Ethernet| Point-to-Point| High-Level Data link Control | Frame Relay | Cisco Discovery|
+  
+Layer Interactions
+  !!!! Search how adjacent layers interact !!!!
+  
+-------------------------------------------------------------------------------------------------------------------------------------
+Quiz
+
+  Given an IP address,____________finds the corresponding MAC address.
+    a)DHCP
+    b)ARP
+    c)DNS
+    d)SSH
+  
+  Given a URL,__________finds the IP address associated with it.
+    a)Telnet
+    b)SSH
+    c)HTTP
+    d)DNS
+  
+  Which of the following is not a feild in the IPv4 header?
+    a)MD
+    b)Header length
+    c)TTL
+    d)DSCP
+    
+  Which of the following is not a Layer 2 Protocol?
+    a)PPP
+    b)DHCP
+    c)HDLC
+    d)Ethernet
+    
+  The____________command issued on a cisco router is used to find the path a packet takes through the network.
+    a)ping
+    b)ifping
+    c)traceroute
+    d)tracert
+---------------------------------------------------------------------------------------------------------------------------------------
+
+IPv4 Addressing and Subnetting
+  Objectives !
+    .Discuss IP address
+    .Convert binary numbers to decimals
+    .Discuss classes
+    .Create subnets
+-------------------------------------
+IPv4 Address
+  .An IPv4 address is a 32-bit numeric identifier assigned to each device on an IP network.
+    > Unicast- The packet is sent to only one device.
+    > Multicast- The packet to many devices 
+    > Broadcast- The packet is sent to all devices in a network or subnet.
+    > Public- These addresses can be used over the internet.
+    > Private- These addresses are used only within a LAN.
+
+Private Addresses
+  . Are also called Request for Comments (RFCs) 1918 addresses.
+  . Can only be used within a private network.
+  . Cannot be routed through the internet.
+  . Enable organizations to work with fewer routable address.
+  
+Binary Numbering 
+  .Counting in binary system is similar to counting in any other number system.
+    >Binary system
+      .sends signals that are interpreted as either 0 (zero) or 1 (one)
+      .Works in the same way as the decimal system except that it uses only 0 and 1
+    
+    >Decimal system
+      .Uses 10 symbols
+      .Signifies a power of 10 when each digit is added to a decimal number
+  
+Bits and Bytes
+  !!! terms are related to digital information in computing !!!
+    .A bit is one digit, either a 1 or a 0
+    .A byte is 8 bits.
+    .An octet is a byte used in the IPv4 address dotted decimal format.
+Bits and Bytes (contd.)
+
+  |     Binary Number                 |       Power of 2      |   Decimal Equivalent      | 
+  -----------------------------------------------------------------------------------------
+  |       00000001                    |       -               |         1                 |
+  |       00000010                    |     2^1               |         2                 |
+  |       00000100                    |     2^2               |         4                 |
+  |       00001000                    |     2^3               |         8                 |
+  |       00010000                    |     2^4               |         16                |
+  |       00100000                    |     2^5               |         32                |
+  |       01000000                    |     2^6               |         64                |
+  |       10000000                    |     2^7               |         128               |
+  
+  Binary to Dotted Decimal
+  A dotted decimal address in binary is 4 bytes seperated by periods. 
+    !!!! Example !!!!
+      11000000.00010000.00001101.00000001 = the decimal equivalent is: 192.16.13.1
+
+Converting Binary To Decimal
+  .To convert 10110001 to a decimal number, find the place values of 1 bit in the binary number:
+    .There is a 1 in the 2^7 place = 128.
+    .There is a 1 in the 2^5 place. the decimal equation becomes 128 + 32 = 160
+    .There is a 1 in the 2^4 place. The decimal equation becomes 160 + 16 = 176
+    .Finally, there is a 1 in the ones column
+    .Add 1 to 176
+    .Result is 177. the decimal equivalent of the binary number 101110001 is 177
+    
+Special Addresses
+  !!! Three types of special address are as follow !!!
+    >Host 
+      .Refers to an address that can be assigned to a network device
+    > Network 
+      .Refers to an address that represents an entire network.
+    > Broadcast
+      .Refers to the last address belonging to the network
+
+Valid Host Addresses
+  .Valid host address are address between the network and the broadcast address. The number of valid host address is 2^n-2, (n)
+  is the number of host bits borrowed for the subnet.
+    Class A network - The valid host addresses are 10.0.0.1 through 10.255.255.254
+    Class B network - The valid addresses are 172.16.0.1 through 172.16.255.254
+    Class C network - The valid host address 192.168.100.1 through 192.168.100.254
+
+Subnet Masks 
+  .A subnet mask
+    .defines the number of bits that represent the network and subnet part of the address.
+    .identifies the destination IP address and determines network path Layer 3 devices
+
+Subnets 
+  Class A, B, or C networks can be subdivided into smaller networks called subnets.
+  The advantage of subnetting are as follows:
+    .Smaller networks are easier to manage
+    .Overall traffic is reduced
+    .Network security policies are more easily applied
+
+Creating Subnets
+  .Subnets can be created by borrwoing bits from the bits to creat a subnet field.
+    !!! Using 1-bit for the subnet field 2^1 or 2 possible subnets !!! refer to bits and bytes for further break down
+    
