@@ -804,3 +804,29 @@ Subnetting is useful to:
   . If two bits are borrowed, 14 host bits are left.
   . Possible combinations of 0s and 1s occur in the remaining 14 bits.
   . this gives 16,384 possible hosts for each subnet.
+  
+  VLSM Class C Addresses 
+  
+  The following table gives an overview of how to use VLSM Class C addresses:
+  
+  Subnet Mask         |      Prefix Length     |    Subnets/Network     |   Hosts/Subnet   |    Toatal Hosts/Network   |
+  ----------------------------------------------------------------------------------------------------------------------
+  255.255.255.128                /25                     2                     126                    254        
+  255.255.255.192                /26                     4                      62                    248
+  255.255.255.224                /27                     8                      30                    240
+  255.255.255.240                /28                    16                      14                    224
+  255.255.255.248                /29                    32                       6                    192
+  255.255.255.252                /30                    64                       2                    124
+  
+  Maximizing Hosts or Subnets
+  . A network administrator has to make a choice between maximizing the number of hosts and the number of subnets depending on the future expansion in the network.
+    If there would be an expansion in the department and branches_____then____> maximize the number of SUBNETS
+    If organizational structure is stable, and more people will be hired_____then____> maximize the number of HOSTS
+  
+  Subnetting Based on Required number of Hosts
+  ** lets consider the requirments of 2000 hosts.
+  . An allocation of Class B network would yield 65,534 hosts, more than what is required.
+  . Subnetting the /16 network into eight /24 subnets would yield 254 hosts (252 usable hosts).
+  . The total number of hosts supported after subnetting is 2,032.
+  . The eight /24 subnets would be 130.100.0.0, 130.100.0.1, etc. till 130.100.0.7, all with /24 prefix lengths.
+  
