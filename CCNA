@@ -692,4 +692,115 @@ Subnets
 Creating Subnets
   .Subnets can be created by borrwoing bits from the bits to creat a subnet field.
     !!! Using 1-bit for the subnet field 2^1 or 2 possible subnets !!! refer to bits and bytes for further break down
-    
+  ** With 6-bits for the subnet field only two bits are left for the host, that yeilds 2^2 or 4 host.
+  ** Two address are set aside for network and broadcast address. At this point, no subnetting is possible. 
+  .A Variable Length Subnet Mask (VLSM) address uses such subnets.
+  .the IP SUBNET-ZERO command needs to be considered when counting the number of subnets.
+  
+  --------------------------------------------------------------------------------------------------------------------------------
+  
+  Quiz
+  
+  The address 1.1.1.1 is a Class______address.
+  a) D
+  b) A
+  c) B
+  d) C
+  
+  The address 172.15.1.0/16 is a ________address.
+  
+  a) host
+  b) private
+  c) broadcast
+  d) APIPA
+  
+  Using 3 bits in subnetting for the subnet field results in ______possible subnets.
+  
+  a) 3
+  b) 2
+  c) 8
+  d) 3^2
+  
+  The address 191.2.55.3 is a Class______ address.
+  
+  a) D
+  b) A
+  c) B
+  d) C
+  
+  The address________ is not a private address.
+  
+  a) 172.17.1.1
+  b) 192.169.2.2
+  c) 10.255.255.254
+  d) 172.33.4.4
+  
+  . Private address or RFCs enable organizations to work with fewer routable addresses and can only be used within a private network.
+  . Binary systems send signals that are interpreted as either 0 or 1 whereas decimal systems use 10 symbols.
+  . IPv4 addresses can be unicast, multicast, broadcast, etc.
+  . There are three types of special addresses: Host, Network, and Broadcast address.
+  . A subnet mask defines the number of bits that represent the network and subnet part of the address.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+VLSM Summarization and Troubleshooting TCP IP
+
+Objectives!
+
+  . Describe the benefits of VLSM's
+  . Calculate VLSM IP addressing design to a network
+  . Describe subnetting a network
+  . Define summarization and switching
+  . Describe the switching process and routing
+  . Explain troubleshooting steps for TCP/IP
+-----------------------------------------------------
+Variable Length Subnet Masks (VLSMs)
+
+VLSMs allow a network administrator to create many networks from a large single network using subnets masks of different lengths.
+  . The Subnet address is created by taking address bits from the host portion of Class A, Class B, and Class C addresses.
+  . When taking (borrowing) a bit from the host feild the number of additional subnets created double each time.
+---------------------------------------------------------  
+Advantage of VLSMs Addressing Design
+
+VLSMs provide two major advantages:
+  . More effecient use of addressing
+  . Ability to perform route summarization
+  
+When borrowing a bit from the host field, the number of additional subnets created is doubled each time.
+
+For example:
+. Borrowing 1 bit creates two possible subnets (2^1=2).
+. Borrowing 2 bits creates four possible subnets (2^2=4).
+** the number of bits borrowed determines the block size.
+
+Block Size
+
+Block size is the number of address in the subnet.
+
+. A block size must be a power of 2 and large enough to accommodate 2 address that must be reserved- the network and the broadcast addresses.
+. Therefore the usable portion of the block size is a power of 2 minus 2.
+
+For example:
+  . If you need 27 hosts, a block size of 32 is required. 2^5-2=30 hosts are available.
+  . If you need 13 hosts, a block size of 16 is required. 2^4-2=14 hosts are available.
+  . If you need 62 hosts, a block size of 32 is required. 2^8-2=126 hosts are available.
+
+. A point to point serial link to another router needs only 2 hosts and a block size of 4.
+
+Subnetting
+
+Subnetting is done by borrowing host bits and using them as network bits.
+
+Subnetting is useful to:
+  . simplify network administration.
+  . enable different uses of physical media subnet as Ethernet and FDDI.
+  . add layers of security to network.
+  
+  Example of Subnetting
+  
+  . (A) network uses Class (B) network address where 16 bits are used for the network and 16 bits for the hosts.
+  . the network administator has to create 4 subnets
+  . there are 65,536 (2^16) possible addresses, of these, 65,534 are usable addresses.
+  . If two bits are borrowed, 14 host bits are left.
+  . Possible combinations of 0s and 1s occur in the remaining 14 bits.
+  . this gives 16,384 possible hosts for each subnet.
