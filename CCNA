@@ -1068,3 +1068,17 @@ Subnetting is useful to:
   no ip domain-lookup          In this case, specifying no lookup will 
                                prevent the device from searching for a name 
                                refrence when an incorrect command is entered.
+  Passwords 
+  Passwords can be configured to protect access to the device. Different passwords can be used for each of the purposes.
+  
+  Purpose                    | Configurations
+  Password protect access to  For Type 7 use the enable password command
+  privileged exec mode:       For Type 5 use the enable secret comman        
+  
+  Password protect access to  Router(config)#line console 0 
+  the console line:           Router(config-line)#password password
+                              Router(config-line)#login
+  
+  Password Protect access     Router(config)#line vty 0 4
+  using Telnet or SSH         Router(config-line)#password password
+  to the device:              Router(config-line)#login
