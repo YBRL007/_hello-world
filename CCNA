@@ -1299,3 +1299,236 @@ PC b            E0 to S1              192.168.1.2/24             0000.0000.000b
 Server          E0 to S2              192.168.2.254/24           0000.0000.000c
 PC D            E0 to S2              192.168.2.2/24             0000.0000.000d
 
+Appropriate IP address and naming is important
+.In the topology^^^^^, the hostname Rtr1 is attached to 192.168.1.0/24 network.
+.switch Rtr2 and Rtr3 names; then Rtr2 would be attacthed to the 192.168.2.0/24 network.
+.All the /30 networks are assigned a subnet in the 192.168.0.0/24 netowrk.
+-----------------------------------------------------------------------------------------
+Quiz
+
+In wireless communication, data is transmitted over______
+a. Copper cable
+b. Air *
+c. Fiber
+d. Metal
+
+Which type of routing is used for SOHO envirnments?
+a. Static routing *
+b. Semi-permanent routing
+c. EIGRP routing
+d. Dynamic routing
+
+All of the following expept______is helpful in troubleshooting a network.
+a. Giving each switch a seperate IP subnet *
+b. Documentation
+c. Appropriate IP addressing
+d. Appropriate device naming
+
+In sending a packet to a device in another network, a PC begins by sending a ______to_______
+a. Frame; the switch
+b. Packet; its default gateway
+c. Packet; the switch
+d. Frame; its default gateway *
+
+In a SOHO environment, the ISP normally provides how many internet addresses?
+a. 2
+b. 1 *
+c. As many as there are devices in the network
+d. 4
+----------------------------------------------------------
+Lesson 8
+
+Internet Protocol Routing
+
+Objectives
+.Explain how a router determines the best path
+.Configure static routes, floating static routes, and default routes
+.Describe general characteristics of routing protocols
+.List the common administrative distance
+.Explain the methods of packet forwarding used in Cisco devices
+
+Routing and Information Sources
+Routing is forwarding a packet to another network or subnet. Routers select the best path to each destination network.
+Routers add routes to their routing table from:
+.connected routes,
+.static routes, and
+.routes learned by using dynamic routing protocols
+
+Connect Networks
+show ip route command
+
+Next Hop
+The next hop is the next router encountered when the packet leaves the egress interface.
+. For Rtr3, the next hop out for the Fa0/0 interface was Rtr1.
+. Rtr1 and Rtr2, must also have a route in its routing table to the destination, or the packet will be dropped
+* all router between the source and the destination must have routes to the destination
+
+Active Interfaces
+A route will be in the routing table only if its interface is active.
+
+Static Routes 
+In configuration mode, enter ip route,then network and network mask. You have a choice of interface or next-hop-ip-address.Finally, administrative distance (AD) can be configured, although this is optional
+.Rtr3(config)# ip route network mask [interface | next-hop-IP-address] {ad}
+For serial point-to-point interfaces, use internet. for the ethernet interfaces, use next-hop-IP-address
+.Rtr3(config)# ip route 10.1.12.0 255.255.255.0 f0/0
+.Rtr3(config)# ip route 10.1.12.0 255.255.255.0 10.1.13.1
+
+Floating Static Routes
+Floating static routes provide a backup route in case the preferred route is no longer available
+.For 10.1.0.0/16, a backup route can be configured as :
+ip route 10.1.0.0 0.0.255.255 f1/0 220
+*this route would not be used unless the preferred route is failed
+
+Default Routes
+A default route is the route taken if there is no more specific route for a destination in the routing table
+.It can be a static route or it can be determined by dynamic routing protocols
+.The routing table for Rtr3 in the topology after adding the staic routes is as follows:
+Rtr3#show ip route
+
+Gateway of last resort is not set
+      25.0.0.0/30 is subnetted, 1 subnets
+  C     25.25.25.0 is directly connected, Fast Ethernet1/0
+      10.0.0.0/24 is subnetted, 3 subnets
+  C   10.1.13.0 is directly connected, fastethernet0/0
+  S   10.1.12.0 [1/0} via 10.1.13.1
+  C   10.1.23.0 is directly connected=, fastethernet 0/1
+  
+Configiuring Default Routes
+The static route Defined on Rtr3 is ip route 0.0.0.0 0.0.0.0 FastEthernet1/0
+Rtr3#show ip route
+Gateway of last resort is 0.0.0.0 to network 0.0.0.0
+      25.0.0.0/30 is subnetted, 1 subnets
+  C     25.25.25.0 is directly connected, Fast Ethernet1/0
+      10.0.0.0/24 is subnetted, 3 subnets
+  C    10.1.13.0 is directly connected, Fastethernet0/0
+  S    10.1.12.0 [1/0} via 10.1.13.1
+  C    10.1.23.0 is directly connected=, Fastethernet 0/1
+  S*  0.0.0.0/0 is directly connected, Fastethernet1/0
+  
+IP Default-Network Command
+
+To configure a default route:
+Rtr3(config)# ip default-network network-number
+
+With the ip default-network command, each downstream router treats this router's route as a default for network-number
+Rtr3(config)# ip default-network 25.0.0.0
+
+Dynamic Routing
+In dynamic routing, the routers communicate with each other using the same routing protocol.
+. Dynamic routing protocols choose the best route based on a metric, if more than one possible route exists to reach one subnet.
+. In dynamic routing, routes do not have to be manually configured.
+
+Routing Protocols vs Routed Protocols
+Routing protocols are used to implement dynamic routing.
+Examples include:
+. Routing Information Protocol (RIP)
+. Enhanced Interior Gateway Routing Protocol (EIGRP)
+. Open Shortest Path First (OSPF)
+. Boarder Gateway Protocol (BGP)
+
+Routed protocols or routable are Layer 3 protocols that transfer data from one host to another across a router.
+i.e
+. Internet Protocol Version 4 (IPv4)
+. Internet Protocol Version 6 (IPv6)
+
+Autonosmous Systems
+An Autonomos System (AS) is a network under common administrative control.
+
+                |------------Interior Gateway Protocol (IGP) is used within an AS
+Routing protocols
+                |------------Exterior Gateway Protocol (EGP) routes between AS
+
+Catergories of Routing protocols are as follows:
+The categories of routing protocols are as follows:
+
+Distance vector
+.Uses the vector and the distance to a destination 
+Enhanced distance vector
+.Uses more thanvector and distance to create the routing table
+Link-state
+.Uses the shortest path first algorithm to create network topology
+
+
+Metrics
+Routing protocols use metrics to determine the best path. Metrics used by various routing protocols are as follows:
+. RIP-Hop count
+. EIGRP-A calculated value (bandwidth, delay etc.)
+. OSPF-Cost(bandwidth of the link)
+
+
+Administrative Distance
+Each routing source is assigned a number from 0 to 255
+. A value of 0 means trustworthy; 255 means the route will not be entered in the routing table.
+. The route with the lowest administrative distance is preferred
+. The destination networks must be identical for administrative distance (AD)to be taken into consideration
+
+Table lists the administrative distance for routing protocols.
+
+Route Source                  |  Default Ad
+Connected interface              0  
+Static route                     1
+EIGRP summary route              5
+External BGP                     20
+Internal EIGRP                   90
+OSPF                             110
+RIPv1, RIPv2                     120
+External EIGRP                   170
+Internal BGP                     200
+Unreachable-not put in           255
+routing table                 
+
+Forwarding Methods for Routers
+The methods to forward packets by Cisco device are as follows:
+
+Process switching
+.CPU processes each packet separately
+Fast switching
+.Uses a cache to store the Layer 2 header and outgoing interface 
+Cisco Express Forwarding (CEF)
+.Default packet forwarding method used on the latest Cisco routers
+------------------
+Quiz
+
+When a router looks up the destination in the routing table for every single packet it is called
+_________.
+a. Dynamic switching
+b. Fast Switching
+c. Process switching *
+d. Cisco Express Forwarding
+
+What type(s) of route is the following. S*0.0.0.0/0 [1/0]via 172.16.10.5
+a.Default *
+b.Subnetted
+c.Dynamic
+d.Local
+
+When a packet is routed across a netork, the _______in the packet changes at every hop while the _____does not.
+a.MAC address, IP address *
+b.IP address, MAC address
+c.Port number, IP address
+d.IP address, port number
+
+A packets destination address is 10.1.5.129. The route for which of the following prefixes will be chosen from the routing table?
+a. 10.1.0.0/16
+b. 10.1.5.0/25
+c. 10.1.5.128/26 *
+d. 10.1.5.0/26
+
+What is the administrative distance of the following route in the show ip route output?
+C 10.1.13.0 is directly connected, fastEthernet0/0
+a.0 *
+b.1
+c.15
+d.90
+------------------------------
+Lesson 9
+
+Managing Cisco Devices
+Objectives
+.Describe the basis of cisco hardware devices
+.Configure a change in boot order
+.Activate IOS Licensing
+.Discuss the concept of remote access
+.Verify remote access to a Cisco device
+.Perform local database authentication
+
