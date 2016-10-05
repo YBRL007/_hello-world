@@ -1049,6 +1049,7 @@ Subnetting is useful to:
   show run                | Displays the configuration currently running in random access memory (RAM)
   show protocol           | Displays the status of any layer 3 protocols
   
+  
   Name Lookup & Domain Name System
   The configurations of Domain Name System (DNS)are shown below.
   
@@ -1068,6 +1069,7 @@ Subnetting is useful to:
   no ip domain-lookup          In this case, specifying no lookup will 
                                prevent the device from searching for a name 
                                refrence when an incorrect command is entered.
+  
   Passwords 
   Passwords can be configured to protect access to the device. Different passwords can be used for each of the purposes.
   
@@ -1082,3 +1084,218 @@ Subnetting is useful to:
   Password Protect access     Router(config)#line vty 0 4
   using Telnet or SSH         Router(config-line)#password password
   to the device:              Router(config-line)#login
+  
+ 
+ EXEC-TIMEOUT Command 
+ The exec-timeout command specifies how many minutes and seconds of idle time will pass before the session is terminated.
+ It defaults to 15 minutes.
+ 
+ On the console line 
+ Router(config)#line 0
+ Router(config-line)#exec-timeout minutes seconds
+ Router(config-line)#login
+ 
+ On the VTY line, for Telnet or SSH sessions to the device
+ Router(config)#line VTY 0 4
+ Router(config-line)#exec-timout
+ minutes seconds
+ Router(config-line)#login
+ 
+ Banners
+ A banner is the message that is displayed on the screen when a user is at various stages of the login process.
+ Different banners can be configured.
+ 
+ .When connecting to the device this banner is displayed:
+  -S1(config)# banner motd "xxx"
+ 
+ .The following banner is displayed at login
+  -S1(config)# banner login "xxx"
+ 
+ .After the user successfully logs in, the following banner is displayed
+  -S1(coS1(config)# banner exec "xxx"
+  
+Debugging 
+The show commands are used to verify and troubleshoot configurations.
+The debug commands let you witness events as the occur.
+
+Options to stop debugging
+.Re-enter the debug command, proceded with the word no
+.Enter undebug all command. The short form of this command is u all
+.Reboot the device ( May not be possible in a production system)
+
+Configuring an Ethernet Interface
+To configure an Ethernet Interface, perform the following steps.
+
+.Enter the configuration mode
+.Specify the interface
+.Assign an IP address and subnet mask
+.Enter the no shutdown comman to enable the interface
+i.e
+
+Router#conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+Router(config)#interface Ethernet1/0
+Router(config-if)#ip address 192.168.1.1 255.255.255.0
+Router(config-if)#no shutdown
+
+After entering no shutdown command, two messages will appear:
+ .%LINK-3-UPDOWN: Interface Ethernet1/0 changed state to up ( indicates the link is physically up)
+ .%LINEPROTO-5-UPDOWN: Line protocol interface Ethernet1/0, changed state to up (indicates the line protocol is up)
+*Both the link state and line protocol must be up for the traffic to pass.
+
+This command is used in the interface configuration mode:
+ .Router(config-if)#shutdown
+
+Two messages appear:
+.%LINK-5-changed: interface Ethernet1/0, changed state to administratively down
+.%LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet1/0, changed state to down
+*When the shutdown command is entered on an interface, the link is not just down; it is adminstratively down.
+
+
+SHOW IP INTERFACES BRIEF Command
+Status of all the interfaces on the router are shown below:
+
+Router#show ip interfaces brief
+
+Interface       |     IP-Address    |  OK?Method Status  |    Protocol    |
+Ethernet0/0       10.0.2.10            YES manual up            up
+Ethernet1/0       10.0.1.10             YES manual up           up
+Serial0/0         10.0.23.3             YES manual up           up
+Serial0/1         172.16.23.1           YES SLARP up            up
+Serial1/0         Unassigned          YES unset admin       down down
+Serial1/1         10.0.10.1           YES manual down           down
+Loopback1         10.10.1.1           YES manual up             up
+
+
+Rebooting the Device
+*IF changes have been made to the running configuration, save them before reloading the router;
+otherwise, the chages will be lost.At privileged exec prompt issue the reload command and confim by pressing the enter key.
+
+.The device begins to reload
+.The reload resason is displayed, for example it was requested by the user.
+.The device proceeds thriugh the normal boot process.
+---------------------------------------------------------------------------------------------------------
+Quiz
+
+When a Cisco router or switch boots, the IOS user interface is in ____mode
+a. privileged exec
+b. configuration
+c. user exec *
+d. interface configuration
+
+The prompt at privileged exec mode is______
+a. hostname# *
+b. Router#
+c. Switch#
+d. ip-domain#
+
+To exit privileged exec mode, enter the ______command
+a. enable
+b. disable *
+c. shutdown
+d. no shutdown
+
+The most secure method of configuring an enable password is to use the ________command
+a. password secret
+b. enable password
+c. enable secret *
+d. disable secret
+
+To enable an interface after it has been configured, use the _____command
+a. ip address
+b. enable
+c. no shutdown *
+d. disable
+-----------------------------------------------------
+Lesson 7
+
+Managing a Cisco Internetwork
+
+Objectives
+.Describe network architechtures for small office/home office and small to medium sized businesses
+.Explain the considerations for wirless access to a network
+.Follow a frame or a packet through an internetwork for troubleshooting purposes.
+
+
+Newtwork Architecture
+Network Architecure refurs to the way devices are connected to form a network. For small
+office/home office (SOHO) environments, the architecture is simpler than in enterprise enviornments.
+
+.Network arch. in a SOHO environment:
+
+                        .One subnet is used for all devices
+SOHO environments |     .Static routes are used for routing
+                        .Full-time netowrk administrator is not required
+                        
+SOHO Architecture
+The characteristics of a SOHO architecture are:
+.The router,switch,and firewall functions are combined into one all-purpose device.
+.The device acts as a DHCP sever for the PC's
+.The Internet Service Provides (ISP) provides one internet address.
+.The device has a defualt route to the Internet
+.Network Address Translation (NAT) is implemented to reach the internet.
+
+Small to Medium-Sized Business Architecture
+In small to medium sized business architecture, one all purpose device does not exist.
+.The switch and router functions are seperated.
+.The router uses firewall software
+
+4pc-----switch-----router---internet
+                        VPN Tunnel
+                        
+Characteristics
+.Depending o the business, there may be a site to site VPN that encrypts traffic between
+this business and its suppliers and/or customers.
+.There are varied types of traffic on the network.
+.Network management and /or monitor software is installed to monitor the status of the devices and traffic.
+.Wirless access can be provided
+
+
+Wirless Access
+The device must be connected for a network to function. the connections can be wired or wireless.
+With wireless access:
+.data transmits over air
+.you can connect to the internet in a business of any size
+.an access point is required.
+.transmissions are easily intercepted.
+
+
+Documention
+Documention is important for understanding the flow of data in the network.
+Documention:
+.helps in troubleshooting network problem
+.includes a topology and a detailed listing of IP address
+*Documention should always be updated.
+
+
+Follow the Frame/Packet
+
+                       192.168.1.254/24---Rtr1  Rtr3------------192.168.2.254/24
+                              Fa0/1         |     |                 F0/1 
+192.168.1.2/24 PC b             |        Fa0/0  Fa0/0                 |
+                                  192.168.0.0/30 192.168.0.4/30             PC D 192.168.2.2/24
+                                            |       |
+                   -----------S1         Fa1/0   Fa1/1               S2---------
+                                              Rtr2                          Server 192.168.2.252/24
+                                                                                  
+192.168.1.1/24 PC a
+
+
+Device         |  Interface to Device | IP Address              | MAC Address
+Rtr1            Fa0/1 to S1            192.168.1.254/24          0000.0000.0011
+                Fa0/0 to Rtr2          192.168.0.1/30            0000.0000.0012
+Rtr2            Fa1/0 to Rtr1          192.168.0.2/30            0000.0000.0021
+                Fa1/1 to Rtr3          192.168.0.6/30            0000.0000.0023
+Rtr3            Fa0/1 to S2            192.168.2.254/24          0000.0000.0032
+                Fa0/0 to Rtr2          192.168.0.5/30            0000.0000.0033
+S1              Fa0/3 to Rtr1                                    0000.0000.0041
+                Fa0/1 to PC a                                    0000.0000.004a
+                Fa0/2 to PC b                                    0000.0000.004b
+S2              Fa0/3 to Rtr3                                    0000.0000.0053
+                Fa0/1 to Server                                  0000.0000.005c
+                Fa0/2 to PC D                                    0000.0000.005d
+PC a            E0 to S1              192.168.1.1/24             0000.0000.000a
+PC b            E0 to S1              192.168.1.2/24             0000.0000.000b
+Server          E0 to S2              192.168.2.254/24           0000.0000.000c
+PC D            E0 to S2              192.168.2.2/24             0000.0000.000d
+
