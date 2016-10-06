@@ -1532,3 +1532,76 @@ Objectives
 .Verify remote access to a Cisco device
 .Perform local database authentication
 
+Internal Componnets of a Cisco Device
+A Cisco device has the following components, which are similar to ther types of electronic devices
+
+Universal Asynchronus Receiver/Transmitter (UART)
+.Controls the AUX and Console Ports
+Universal Serial Bus (USB) 
+.Can be used as flash memory 
+Application-specific Intergrated Circuit (ASIC)
+.Controls the flow of data between memory, a CPU and an interface
+*Remeber to turn the router or switch off before installing a module or interface
+
+Memory Components 
+Memory includes the folowing componets:
+
+Read-only Memory (ROM)
+.Stores the POST (startup)
+ROMMON, and bootstrap
+
+Random Access Memory (RAM)
+.Stores Dynamic information
+
+Compact Flash and Flash
+.Store the Cisco Internetwork Operating System (IOS)
+
+NON-violatile RAM
+(NVRAM)
+.Holds the configuration files and configuration register 
+
+Cisco Device Basics
+A new switch can provide basic switching capabilities with no configuration.
+.A router requires configuration
+.A console connection is required to access a Cisco device until an IP address is configured.
+
+Console Port
+A Cisco console port requires a rollover cable with an RJ-45 connector.
+.A rollover cable pinouts are 1 through 8 on one side, and 8 through 1 on the other.
+.A serial Connection with a DB-9 connector is used while connecting to the console port from a PC
+.A terminal application is used on the PC to access the serial port.
+
+                  Serial Settings
+Baud rate                | 9600
+Data bits                | 8
+Parity                   | None
+Stop bits                | 1
+Flow control             | None
+
+
+Ethernet Port connects to Local Area Network (LAN).
+.Port Speed may vary from 10 megabits to 10 gigabits
+.Cable used has an RJ-45 connect as does the console cable
+
+There two types of cables: 
+Straight Through-
+Connects two different types of devices
+1-1
+2-2
+3-3
+4-4
+5-5
+6-6
+7-7
+8-8
+
+Crossover:
+Connects two similar devices
+1-3
+2-6
+3-1
+4-4
+5-5
+6-2
+7-7
+8-8
