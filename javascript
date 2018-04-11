@@ -2856,4 +2856,1599 @@ The typeof operator returns "object" for arrays because in JavaScript arrays are
 
 -----------------------------------------------------------------------------------------------------------------------------
 
+A JavaScript function is a block of code designed to perform a particular task.
+
+A JavaScript function is executed when "something" invokes it (calls it).
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Functions</h2>
+
+<p>This example calls a function which performs a calculation, and returns the result:</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction(p1, p2) {
+    return p1 * p2;
+}
+document.getElementById("demo").innerHTML = myFunction(4, 3);
+</script>
+
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------
+
+JavaScript Function Syntax
+A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses ().
+
+Function names can contain letters, digits, underscores, and dollar signs (same rules as variables).
+
+The parentheses may include parameter names separated by commas:
+(parameter1, parameter2, ...)
+
+The code to be executed, by the function, is placed inside curly brackets: {}
+
+function name(parameter1, parameter2, parameter3) {
+    code to be executed
+}
+Function parameters are listed inside the parentheses () in the function definition.
+
+Function arguments are the values received by the function when it is invoked.
+
+Inside the function, the arguments (the parameters) behave as local variables.
+
+A Function is much the same as a Procedure or a Subroutine, in other programming languages.
+
+Function Invocation
+The code inside the function will execute when "something" invokes (calls) the function:
+
+When an event occurs (when a user clicks a button)
+When it is invoked (called) from JavaScript code
+Automatically (self invoked)
+You will learn a lot more about function invocation later in this tutorial.
+
+---------------------------------------------------------------------------------------------------------
+
+Function Return
+When JavaScript reaches a return statement, the function will stop executing.
+
+If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking statement.
+
+Functions often compute a return value. The return value is "returned" back to the "caller":
+
+Example
+Calculate the product of two numbers, and return the result:
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Functions</h2>
+
+<p>This example calls a function which performs a calculation and returns the result:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = myFunction(4, 3);
+document.getElementById("demo").innerHTML = x;
+
+function myFunction(a, b) {
+    return a * b;
+}
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------------------------
+
+Why Functions?
+You can reuse code: Define the code once, and use it many times.
+
+You can use the same code many times with different arguments, to produce different results
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Functions</h2>
+
+<p>This example calls a function to convert from Fahrenheit to Celsius:</p>
+<p id="demo"></p>
+
+<script>
+function toCelsius(f) {
+    return (5/9) * (f-32);
+}
+document.getElementById("demo").innerHTML = toCelsius(77);
+</script>
+
+</body>
+</html>
+
+---------------------------------------------------------------------------------------------
+
+The () Operator Invokes the Function
+Using the example above, toCelsius refers to the function object, and toCelsius() refers to the function result.
+
+Accessing a function without () will return the function definition instead of the function result:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Functions</h2>
+
+<p>Accessing a function without () will return the function definition instead of the function result:</p>
+<p id="demo"></p>
+
+<script>
+function toCelsius(f) {
+    return (5/9) * (f-32);
+}
+document.getElementById("demo").innerHTML = toCelsius;
+</script>
+
+</body>
+</html>
+
+---------------------------------------------------------------------------------------
+
+Functions Used as Variable Values
+Functions can be used the same way as you use variables, in all types of formulas, assignments, and calculations.
+
+Instead of using a variable to store the return value of a function:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML =
+"The temperature is " + toCelsius(77) + " Celsius";
+
+function toCelsius(fahrenheit) {
+    return (5/9) * (fahrenheit-32);
+} 
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------
+
+Real Life Objects, Properties, and Methods
+In real life, a car is an object.
+
+A car has properties like weight and color, and methods like start and stop:
+
+Object	Properties	Methods
+	
+car.name = Fiat            
+
+car.model = 500
+
+car.weight = 850kg
+
+car.color = white	
+__________________
+car.start()
+
+car.drive()
+
+car.brake() 
+
+car.stop()
+-----------------------------------------------------------------------------------------
+All cars have the same properties, but the property values differ from car to car.
+
+All cars have the same methods, but the methods are performed at different times.
+
+JavaScript Objects
+You have already learned that JavaScript variables are containers for data values.
+
+This code assigns a simple value (Fiat) to a variable named car:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Creating a JavaScript Variable.</p>
+
+<p id="demo"></p>
+
+<script>
+var car = "Fiat";
+document.getElementById("demo").innerHTML = car;
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------
+Objects are variables too. But objects can contain many values.
+
+This code assigns many values (Fiat, 500, white) to a variable named car:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Creating a JavaScript Object.</p>
+
+<p id="demo"></p>
+
+<script>
+var car = {type:"Fiat", model:"500", color:"white"};
+document.getElementById("demo").innerHTML = car.type;
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------
+The values are written as name:value pairs (name and value separated by a colon).
+
+JavaScript objects are containers for named values.
+---------------------------------------------------------------------------
+Object Properties
+The name:values pairs (in JavaScript objects) are called properties.
+
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+Property	Property Value
+firstName	John
+lastName	Doe
+age	50
+eyeColor	blue
+Object Methods
+Methods are actions that can be performed on objects.
+
+Methods are stored in properties as function definitions.
+
+Property	Property Value
+firstName	John
+lastName	Doe
+age	50
+eyeColor	blue
+fullName	function() {return this.firstName + " " + this.lastName;}
+JavaScript objects are containers for named values called properties or methods.
+
+Object Definition
+You define (and create) a JavaScript object with an object literal:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Creating a JavaScript Object.</p>
+
+<p id="demo"></p>
+
+<script>
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+document.getElementById("demo").innerHTML =
+person.firstName + " is " + person.age + " years old.";
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------
+
+Spaces and line breaks are not important. An object definition can span multiple lines:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Creating a JavaScript Object.</p>
+
+<p id="demo"></p>
+
+<script>
+var person = {
+    firstName : "John",
+    lastName  : "Doe",
+    age       : 50,
+    eyeColor  : "blue"
+};
+
+document.getElementById("demo").innerHTML =
+person.firstName + " is " + person.age + " years old.";
+</script>
+
+</body>
+</html>
+
+-------------------------------------------------------------------------------------------
+
+Accessing Object Properties
+You can access object properties in two ways:
+
+objectName.propertyName
+or
+
+objectName["propertyName"]
+-------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>
+There are two different ways to access an object property: 
+</p>
+<p>You can use person.property or person["property"].</p>
+
+<p id="demo"></p>
+
+<script>
+var person = {
+    firstName: "John",
+    lastName : "Doe",
+    id       :  5566
+};
+document.getElementById("demo").innerHTML =
+person.firstName + " " + person.lastName;
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>
+There are two different ways to access an object property: 
+</p>
+<p>You can use person.property or person["property"].</p>
+
+<p id="demo"></p>
+
+<script>
+var person = {
+    firstName: "John",
+    lastName : "Doe",
+    id       :  5566
+};
+document.getElementById("demo").innerHTML =
+person["firstName"] + " " + person["lastName"];
+</script>
+
+</body>
+</html>
+
+------------------------------------------------------------------------------------------
+
+Accessing Object Methods
+You access an object method with the following syntax:
+
+objectName.methodName()
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Creating and using an object method.</p>
+
+<p>An object method is a function definition, stored as a property value.</p>
+
+<p id="demo"></p>
+
+<script>
+var person = {
+    firstName: "John",
+    lastName : "Doe",
+    id       : 5566,
+    fullName : function() {
+       return this.firstName + " " + this.lastName;
+    }
+};
+
+document.getElementById("demo").innerHTML = person.fullName();
+</script>
+</body>
+</html>
+-------------------------------------------------------------------------------------------------
+
+If you access a method without (), it will return the function definition:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Object Methods</h2>
+
+<p>If you access an object method without (), it will return the function definition:</p>
+
+<p id="demo"></p>
+
+<script>
+var person = {
+    firstName: "John",
+    lastName : "Doe",
+    id       : 5566,
+    fullName : function() {
+       return this.firstName + " " + this.lastName;
+    }
+};
+
+document.getElementById("demo").innerHTML = person.fullName;
+</script>
+</body>
+</html>
+----------------------------------------------------------------------------------
+
+A method is actually a function definition stored as a property value.
+
+Do Not Declare Strings, Numbers, and Booleans as Objects!
+When a JavaScript variable is declared with the keyword "new", the variable is created as an object:
+
+var x = new String();        // Declares x as a String object
+var y = new Number();        // Declares y as a Number object
+var z = new Boolean();       // Declares z as a Boolean object
+Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.
+
+You will learn more about objects later in this tutorial.
+------------------------------------------------------------------------------------------------------------
+Scope determines the accessibility (visibility) of variables.
+
+JavaScript Function Scope
+In JavaScript there are two types of scope:
+
+Local scope
+Global scope
+JavaScript has function scope: Each function creates a new scope.
+
+Scope determines the accessibility (visibility) of these variables.
+
+Variables defined inside a function are not accessible (visible) from outside the function.
+
+Local JavaScript Variables
+Variables declared within a JavaScript function, become LOCAL to the function.
+
+Local variables have local scope: They can only be accessed within the function.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The local variable carName cannot be accessed from code outside the function:</p>
+
+<p id="demo"></p>
+
+<script>
+myFunction();
+document.getElementById("demo").innerHTML =
+"The type of carName is " + typeof carName;
+
+function myFunction() {
+    var carName = "Volvo";
+}
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------
+
+Since local variables are only recognized inside their functions, variables with the same name can be used in different functions.
+
+Local variables are created when a function starts, and deleted when the function is completed.
+
+Global JavaScript Variables
+A variable declared outside a function, becomes GLOBAL.
+
+A global variable has global scope: All scripts and functions on a web page can access it. 
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>A GLOBAL variable can be accessed from any script or function.</p>
+
+<p id="demo"></p>
+
+<script>
+var carName = "Volvo";
+myFunction();
+
+function myFunction() {
+    document.getElementById("demo").innerHTML =
+    "I can display " + carName;
+}
+</script>
+
+</body>
+</html>
+
+JavaScript Variables
+In JavaScript, objects and functions are also variables.
+
+Scope determines the accessibility of variables, objects, and functions from different parts of the code.
+
+----------------------------------------------------------------------------------------
+Automatically Global
+If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+
+This code example will declare a global variable carName, even if the value is assigned inside a function.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>
+If you assign a value to a variable that has not been declared,
+it will automatically become a GLOBAL variable:
+</p>
+
+<p id="demo"></p>
+
+<script>
+myFunction();
+
+// code here can use carName as a global variable
+document.getElementById("demo").innerHTML = "I can display " + carName;
+
+function myFunction() {
+    carName = "Volvo";
+}
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------
+Strict Mode
+All modern browsers support running JavaScript in "Strict Mode".
+
+You will learn more about how to use strict mode in a later chapter of this tutorial.
+
+Global variables are not created automatically in "Strict Mode".
+
+Global Variables in HTML
+With JavaScript, the global scope is the complete JavaScript environment.
+
+In HTML, the global scope is the window object. All global variables belong to the window object.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>
+In HTML, all global variables will become window variables.
+</p>
+
+<p id="demo"></p>
+
+<script>
+var carName = "Volvo";
+
+// code here can use window.carName
+document.getElementById("demo").innerHTML = "I can display " + window.carName;
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------
+Warning
+Do NOT create global variables unless you intend to.
+
+Your global variables (or functions) can overwrite window variables (or functions).
+Any function, including the window object, can overwrite your global variables and functions.
+
+The Lifetime of JavaScript Variables
+The lifetime of a JavaScript variable starts when it is declared.
+
+Local variables are deleted when the function is completed.
+
+In a web browser, global variables are deleted when you close the browser window (or tab), but remain available to new pages loaded into the same window.
+
+Function Arguments
+Function arguments (parameters) work as local variables inside functions.
+
+---------------------------------------------------------------------------------------------------
+
+HTML events are "things" that happen to HTML elements.
+
+When JavaScript is used in HTML pages, JavaScript can "react" on these events.
+
+HTML Events
+An HTML event can be something the browser does, or something a user does.
+
+Here are some examples of HTML events:
+
+An HTML web page has finished loading
+An HTML input field was changed
+An HTML button was clicked
+Often, when events happen, you may want to do something.
+
+JavaScript lets you execute code when events are detected.
+
+HTML allows event handler attributes, with JavaScript code, to be added to HTML elements.
+
+With single quotes:
+
+<element event='some JavaScript'>
+With double quotes:
+
+<element event="some JavaScript">
+In the following example, an onclick attribute (with code), is added to a button element:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="document.getElementById('demo').innerHTML=Date()">The time is?</button>
+
+<p id="demo"></p>
+
+</body>
+</html>
+---------------------------------------------------------------------------------
+In the example above, the JavaScript code changes the content of the element with id="demo".
+
+In the next example, the code changes the content of its own element (using this.innerHTML):
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="this.innerHTML=Date()">The time is?</button>
+
+</body>
+</html>
+
+---------------------------------------------------------------------------------------------
+JavaScript code is often several lines long. It is more common to see event attributes calling functions:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to display the date.</p>
+
+<button onclick="displayDate()">The time is?</button>
+
+<script>
+function displayDate() {
+    document.getElementById("demo").innerHTML = Date();
+}
+</script>
+
+<p id="demo"></p>
+
+</body>
+</html> 
+---------------------------------------------------------------------------------------------------------
+Common HTML Events
+Here is a list of some common HTML events:
+
+Event	Description
+onchange	An HTML element has been changed
+onclick	The user clicks an HTML element
+onmouseover	The user moves the mouse over an HTML element
+onmouseout	The user moves the mouse away from an HTML element
+onkeydown	The user pushes a keyboard key
+onload	The browser has finished loading the page
+The list is much longer: W3Schools JavaScript Reference HTML DOM Events.
+
+What can JavaScript Do?
+Event handlers can be used to handle, and verify, user input, user actions, and browser actions:
+
+Things that should be done every time a page loads
+Things that should be done when the page is closed
+Action that should be performed when a user clicks a button
+Content that should be verified when a user inputs data
+And more ...
+Many different methods can be used to let JavaScript work with events:
+
+HTML event attributes can execute JavaScript code directly
+HTML event attributes can call JavaScript functions
+You can assign your own event handler functions to HTML elements
+You can prevent events from being sent or being handled
+And more ...
+You will learn a lot more about events and event handlers in the HTML DOM chapters.
+---------------------------------------------------------------------------------------------------
+
+JavaScript strings are used for storing and manipulating text.
+
+JavaScript Strings
+A JavaScript string is zero or more characters written inside quotes.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Strings</h2>
+
+<p id="demo"></p>
+
+<script>
+var x = "John Doe";  // String written inside quotes
+document.getElementById("demo").innerHTML = x;
+</script>
+
+</body>
+</html>
+
+---------------------------------------------------------------------------------------------
+You can use single or double quotes:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Strings</h2>
+
+<p>Strings are written inside quotes. You can use single or double quotes:</p>
+
+<p id="demo"></p>
+
+<script>
+
+var carName1 = "Volvo XC60"; // Double quotes
+var carName2 = 'Volvo XC60'; // Single quotes
+
+document.getElementById("demo").innerHTML =
+carName1 + " " + carName2; 
+
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------
+You can use quotes inside a string, as long as they don't match the quotes surrounding the string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Strings</h2>
+
+<p>You can use quotes inside a string, as long as they don't match the quotes surrounding the string.</p>
+
+<p id="demo"></p>
+
+<script>
+
+var answer1 = "It's alright";
+var answer2 = "He is called 'Johnny'";
+var answer3 = 'He is called "Johnny"'; 
+
+document.getElementById("demo").innerHTML =
+answer1 + "<br>" + answer2 + "<br>" + answer3; 
+
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------
+String Length
+The length of a string is found in the built in property length:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Properties</h2>
+
+<p>The length property returns the length of a string:</p>
+
+<p id="demo"></p>
+
+<script>
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+document.getElementById("demo").innerHTML = txt.length;
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------
+Special Characters
+Because strings must be written within quotes, JavaScript will misunderstand this string:
+var x = "We are the so-called "Vikings" from the north.";
+The string will be chopped to "We are the so-called ".
+
+The solution to avoid this problem, is to use the backslash escape character.
+
+The backslash (\) escape character turns special characters into string characters:
+
+Code	Result	Description
+\'	'	Single quote
+\"	"	Double quote
+\\	\	Backslash
+The sequence \"  inserts a double quote in a string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Strings</h2>
+
+<p>The escape sequence \" inserts a double quote in a string.</p>
+
+<p id="demo"></p>
+
+<script>
+
+var x = "We are the so-called \"Vikings\" from the north.";
+document.getElementById("demo").innerHTML = x; 
+
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------
+The sequence \'  inserts a single quote in a string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Strings</h2>
+
+<p>The escape sequence \' inserts a single quote in a string.</p>
+
+<p id="demo"></p>
+
+<script>
+
+var x = 'It\'s alright.';
+document.getElementById("demo").innerHTML = x; 
+
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------
+The sequence \\  inserts a backslash in a string:
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Strings</h2>
+
+<p>The escape sequence \\ inserts a backslash in a string.</p>
+
+<p id="demo"></p>
+
+<script>
+
+var x = "The character \\ is called backslash.";
+document.getElementById("demo").innerHTML = x; 
+
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------------
+
+Six other escape sequences are valid in JavaScript:
+
+Code	Result
+\b	Backspace
+\f	Form Feed
+\n	New Line
+\r	Carriage Return
+\t	Horizontal Tabulator
+\v	Vertical Tabulator
+The 6 escape characters above were originally designed to control typewriters, teletypes, and fax machines. They do not make any sense in HTML.
+
+Breaking Long Code Lines
+For best readability, programmers often like to avoid code lines longer than 80 characters.
+
+If a JavaScript statement does not fit on one line, the best place to break it is after an operator:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Statements</h2>
+
+<p>
+The best place to break a code line is after an operator or a comma.
+</p>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML =
+"Hello Dolly!";
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------
+You can also break up a code line within a text string with a single backslash:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Strings</h2>
+
+<p>
+You can break a code line within a text string with a backslash.
+</p>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = "Hello \
+Dolly!";
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------
+The \ method is not the preferred method. It might not have universal support.
+Some browsers do not allow spaces behind the \ character.
+
+A safer way to break up a string, is to use string addition:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Strings</h2>
+
+<p>
+The safest way to break a code line in a string is using string addition.
+</p>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = "Hello " +
+"Dolly!";
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------
+You cannot break up a code line with a backslash:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Statements</h2>
+
+<p id="demo">You cannot break a code line with a \ backslash.</p>
+
+<script>
+document.getElementById("demo").innerHTML = \
+"Hello Dolly.";
+</script>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------
+Strings Can be Objects
+Normally, JavaScript strings are primitive values, created from literals:
+
+var firstName = "John";
+
+But strings can also be defined as objects with the keyword new:
+
+var firstName = new String("John");
+
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+
+<script>
+var x = "John";              // x is a string
+var y = new String("John");  // y is an object
+
+document.getElementById("demo").innerHTML =
+typeof x + "<br>" + typeof y;
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------
+Don't create strings as objects. It slows down execution speed.
+The new keyword complicates the code. This can produce some unexpected results:
+
+When using the == operator, equal strings are equal:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Never Create Strings as objects.</h2>
+<p>Strings and objects cannot be safely compared.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = "John";              // x is a string
+var y = new String("John");  // y is an object
+document.getElementById("demo").innerHTML = (x==y);
+</script>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------
+When using the === operator, equal strings are not equal, because the === operator expects equality in both type and value.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Never Create Strings as objects.</h2>
+<p>Strings and objects cannot be safely compared.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = "John";              // x is a string
+var y = new String("John");  // y is an object
+document.getElementById("demo").innerHTML = (x===y);
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------
+Or even worse. Objects cannot be compared:
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Never Create Strings as objects.</h2>
+<p>JavaScript objects cannot be compared.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = new String("John");  // x is an object
+var y = new String("John");  // y is an object
+document.getElementById("demo").innerHTML = (x==y);
+</script>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Never Create Strings as objects.</h2>
+<p>JavaScript objects cannot be compared.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = new String("John");  // x is an object
+var y = new String("John");  // y is an object
+document.getElementById("demo").innerHTML = (x===y);
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------
+Note the difference between (x==y) and (x===y).
+Comparing two JavaScript objects will always return false.
+------------------------------------------------------------------------------------------------
+String methods help you to work with strings.
+
+String Methods and Properties
+Primitive values, like "John Doe", cannot have properties or methods (because they are not objects).
+
+But with JavaScript, methods and properties are also available to primitive values, because JavaScript treats primitive values as objects when executing methods and properties.
+
+String Length
+The length property returns the length of a string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Properties</h2>
+
+<p>The length property returns the length of a string:</p>
+
+<p id="demo"></p>
+
+<script>
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+document.getElementById("demo").innerHTML = txt.length;
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------
+Finding a String in a String
+The indexOf() method returns the index of (the position of) the first occurrence of a specified text in a string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The indexOf() method returns the position of the first occurrence of a specified text:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Please locate where 'locate' occurs!";
+var pos = str.indexOf("locate");
+document.getElementById("demo").innerHTML = pos;
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------------------------------------------
+The lastIndexOf() method returns the index of the last occurrence of a specified text in a string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The lastIndexOf() method returns the position of the last occurrence of a specified text:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Please locate where 'locate' occurs!";
+var pos = str.lastIndexOf("locate");
+document.getElementById("demo").innerHTML = pos;
+</script>
+
+</body>
+</html>
+
+------------------------------------------------------------------------------------------------------------
+Both the indexOf(), and the lastIndexOf() methods return -1 if the text is not found.
+
+JavaScript counts positions from zero.
+0 is the first position in a string, 1 is the second, 2 is the third ...
+
+Both methods accept a second parameter as the starting position for the search:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The indexOf() method accepts a second parameter as the starting position for the search:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Please locate where 'locate' occurs!";
+var pos = str.indexOf("locate",15);
+document.getElementById("demo").innerHTML = pos;
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------
+Searching for a String in a String
+The search() method searches a string for a specified value and returns the position of the match:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The search() method returns the position of the first occurrence of a specified text in a string:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Please locate where 'locate' occurs!";
+var pos = str.search("locate");
+document.getElementById("demo").innerHTML = pos;
+</script>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------
+Did You Notice?
+The two methods, indexOf() and search(), are equal?
+
+They accept the same arguments (parameters), and return the same value?
+
+The two methods are NOT equal. These are the differences:
+
+The search() method cannot take a second start position argument.
+The indexOf() method cannot take powerful search values (regular expressions).
+You will learn more about regular expressions in a later chapter.
+
+
+-----------------------------------------------------------------------------------------------------------------
+Extracting String Parts
+There are 3 methods for extracting a part of a string:
+
+slice(start, end)
+substring(start, end)
+substr(start, length)
+The slice() Method
+slice() extracts a part of a string and returns the extracted part in a new string.
+
+The method takes 2 parameters: the starting index (position), and the ending index (position).
+
+This example slices out a portion of a string from position 7 to position 13:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The slice() method extract a part of a string
+and returns the extracted parts in a new string:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Apple, Banana, Kiwi";
+var res = str.slice(7,13);
+document.getElementById("demo").innerHTML = res; 
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------
+If a parameter is negative, the position is counted from the end of the string.
+
+This example slices out a portion of a string from position -12 to position -6:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The slice() method extract a part of a string
+and returns the extracted parts in a new string:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Apple, Banana, Kiwi";
+var res = str.slice(-12,-6);
+document.getElementById("demo").innerHTML = res;
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------
+If you omit the second parameter, the method will slice out the rest of the string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The slice() method extract a part of a string
+and returns the extracted parts in a new string:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Apple, Banana, Kiwi";
+var res = str.slice(7);
+document.getElementById("demo").innerHTML = res;
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------
+or, counting from the end:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The slice() method extract a part of a string
+and returns the extracted parts in a new string:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Apple, Banana, Kiwi";
+var res = str.slice(-12) 
+document.getElementById("demo").innerHTML = res;
+</script>
+
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------------------
+Negative positions do not work in Internet Explorer 8 and earlier.
+-------------------------------------------------------------------------------------------------
+
+The substring() Method
+substring() is similar to slice().
+
+The difference is that substring() cannot accept negative indexes.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The substr() method extract a part of a string
+and returns the extracted parts in a new string:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Apple, Banana, Kiwi";
+var res = str.substring(7,13);
+document.getElementById("demo").innerHTML = res;
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------
+If you omit the second parameter, substring() will slice out the rest of the string.
+
+The substr() Method
+substr() is similar to slice().
+
+The difference is that the second parameter specifies the length of the extracted part.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The substr() method extract a part of a string
+and returns the extracted parts in a new string:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "Apple, Banana, Kiwi";
+var res = str.substr(7,6);
+document.getElementById("demo").innerHTML = res;
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------
+If the first parameter is negative, the position counts from the end of the string.
+
+The second parameter can not be negative, because it defines the length.
+
+If you omit the second parameter, substr() will slice out the rest of the string.
+
+Replacing String Content
+The replace() method replaces a specified value with another value in a string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Please visit Microsoft!</p>
+
+<script>
+function myFunction() {
+    var str = document.getElementById("demo").innerHTML; 
+    var txt = str.replace("Microsoft","W3Schools");
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------
+The replace() method does not change the string it is called on. It returns a new string.
+
+By default, the replace() function replaces only the first match:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Please visit Microsoft and Microsoft!</p>
+
+<script>
+function myFunction() {
+    var str = document.getElementById("demo").innerHTML; 
+    var txt = str.replace("Microsoft","W3Schools");
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------
+By default, the replace() function is case sensitive. Writing MICROSOFT (with upper-case) will not work:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Please visit Microsoft!</p>
+
+<script>
+function myFunction() {
+    var str = document.getElementById("demo").innerHTML; 
+    var txt = str.replace("MICROSOFT","W3Schools");
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+<p>The example does not work because MICROSOFT is written with upper case letters."</p>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+To replace case insensitive, use a regular expression with an /i flag (insensitive):
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Please visit Microsoft!</p>
+
+<script>
+function myFunction() {
+    var str = document.getElementById("demo").innerHTML; 
+    var txt = str.replace(/MICROSOFT/i,"W3Schools");
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>
+
+
+--------------------------------------------------------------------------------------------------
+Note that regular expressions are written without quotes.
+
+To replace all matches, use a regular expression with a /g flag (global match):
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>Replace all occurrences of "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Please visit Microsoft and Microsoft!</p>
+
+<script>
+function myFunction() {
+    var str = document.getElementById("demo").innerHTML; 
+    var txt = str.replace(/Microsoft/g,"W3Schools");
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------------------------------------------
+You will learn a lot more about regular expressions in the chapter JavaScript Regular Expressions.
+
+Converting to Upper and Lower Case
+A string is converted to upper case with toUpperCase():
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
