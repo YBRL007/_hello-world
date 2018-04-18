@@ -4400,6 +4400,521 @@ function myFunction() {
 </body>
 </html>
 -----------------------------------------------------------------------------------------------------------------
+A string is converted to lower case with toLowerCase():
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Convert string to lower case:</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo">Hello World!</p>
+
+<script>
+function myFunction() {
+    var text = document.getElementById("demo").innerHTML;
+    document.getElementById("demo").innerHTML = text.toLowerCase();
+}
+</script>
+
+</body>
+</html>
+
+-------------------------------------------------------------------------------------------------------
+The concat() Method
+
+concat() joins two or more strings:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript String Methods</h2>
+
+<p>The concat() method joins two or more strings:</p>
+
+<p id="demo"></p>
+
+<script>
+var text1 = "Hello";
+var text2 = "World!";
+var text3 = text1.concat(" ",text2);
+document.getElementById("demo").innerHTML = text3;
+</script>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------
+The concat() method can be used instead of the plus operator. These two lines do the same:
+
+var text = "Hello" + " " + "World!";
+var text = "Hello".concat(" ", "World!");
+-------------------------------------------------------------------------------------
+There are 2 safe methods for extracting string characters:
+
+charAt(position)
+charCodeAt(position)
+
+The charAt() Method
+The charAt() method returns the character at a specified index (position) in a string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The charAt() method returns the character at a given position in a string:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "HELLO WORLD";
+document.getElementById("demo").innerHTML = str.charAt(0);
+</script>
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+The charCodeAt() Method
+The charCodeAt() method returns the unicode of the character at a specified index in a string:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The charCodeAt() method returns the unicode of the character at a given position in a string:</p>
+
+<p id="demo"></p>
+
+<script>
+var str = "HELLO WORLD";
+document.getElementById("demo").innerHTML = str.charCodeAt(0);
+</script>
+</body>
+</html>
+----------------------------------------------------------------------------------------------------------
+
+Accessing a String as an Array is Unsafe
+You might have seen code like this, accessing a string as an array:
+
+var str = "HELLO WORLD";
+
+str[0];                   // returns H
+This is unsafe and unpredictable:
+
+It does not work in all browsers (not in IE5, IE6, IE7)
+It makes strings look like arrays (but they are not)
+str[0] = "H" does not give an error (but does not work)
+If you want to read a string as an array, convert it to an array first.
+
+Converting a String to an Array
+A string can be converted to an array with the split() method:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click "Try it" to display the first array element, after a string split.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var str = "a,b,c,d,e,f";
+    var arr = str.split(",");
+    document.getElementById("demo").innerHTML = arr[0];
+}
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------
+If the separator is omitted, the returned array will contain the whole string in index [0].
+
+If the separator is "", the returned array will be an array of single characters:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var str = "Hello";
+var arr = str.split("");
+var text = "";
+var i;
+for (i = 0; i < arr.length; i++) {
+    text += arr[i] + "<br>"
+}
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------
+Javascript Numbers
+
+JavaScript has only one type of number. Numbers can be written with or without decimals.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Numbers can be written with or without decimals:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 3.14;
+var y = 3;
+document.getElementById("demo").innerHTML = x + "<br>" + y;
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------
+Extra large or extra small numbers can be written with scientific (exponent) notation:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Extra large or extra small numbers can be written with scientific (exponent) notation:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 123e5;
+var y = 123e-5;
+document.getElementById("demo").innerHTML = x + "<br>" + y;
+</script>
+
+</body>
+</html>
+
+------------------------------------------------------------------------------------------------------
+JavaScript Numbers are Always 64-bit Floating Point
+Unlike many other programming languages, JavaScript does not define different types of numbers, like integers, short, long, floating-point etc.
+
+JavaScript numbers are always stored as double precision floating point numbers, following the international IEEE 754 standard. 
+
+This format stores numbers in 64 bits, where the number (the fraction) is stored in bits 0 to 51, the exponent in bits 52 to 62, and the sign in bit 63:
+
+Value (aka Fraction/Mantissa)	Exponent	Sign
+52 bits (0 - 51) 	11 bits (52 - 62)	1 bit (63)
+
+------------------------------------------------------------------------
+Precision
+Integers (numbers without a period or exponent notation) are accurate up to 15 digits.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Integers (numbers without a period or exponent notation) are accurate up to 15 digits:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 999999999999999;
+var y = 9999999999999999;
+document.getElementById("demo").innerHTML = x + "<br>" + y;
+</script>
+
+</body>
+</html>
+
+The maximum number of decimals is 17, but floating point arithmetic is not always 100% accurate:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Floating point arithmetic is not always 100% accurate.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 0.2 + 0.1;
+document.getElementById("demo").innerHTML = "0.2 + 0.1 = " + x;
+</script>
+
+</body>
+</html>
+
+To solve the problem above, it helps to multiply and divide:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Floating point arithmetic is not always 100% accurate:</p>
+<p id="demo1"></p>
+
+<p>But it helps to multiply and divide:</p>
+
+<p id="demo2"></p>
+
+<script>
+var x = 0.2 + 0.1;
+document.getElementById("demo1").innerHTML = "0.2 + 0.1 = " + x;
+var y = (0.2*10 + 0.1*10) / 10;
+document.getElementById("demo2").innerHTML = "0.2 + 0.1 = " + y;
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------
+
+Adding Numbers and Strings
+WARNING !!
+
+JavaScript uses the + operator for both addition and concatenation.
+
+Numbers are added. Strings are concatenated.
+
+If you add two numbers, the result will be a number:
+
+​<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p id="demo"></p>
+
+<script>
+var x = 10;
+var y = 20;
+var z = x + y;
+document.getElementById("demo").innerHTML = z;
+</script>
+
+</body>
+</html>
+
+If you add two strings, the result will be a string concatenation:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>If you add two strings, the result will be a string:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = "10";
+var y = "20";
+var z = x + y;
+document.getElementById("demo").innerHTML = z;
+</script>
+
+</body>
+</html>
+
+If you add a number and a string, the result will be a string concatenation:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>If you add a number and a string, the result will be a string:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 10;
+var y = "20";
+var z = x + y;
+document.getElementById("demo").innerHTML = z;
+</script>
+
+</body>
+</html>
+
+If you add a string and a number, the result will be a string concatenation:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>If you add a string and a number, the result will be a string:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = "10";
+var y = 20;
+document.getElementById("demo").innerHTML =
+"The result is: " + x + y;
+</script>
+
+</body>
+</html>
+
+A common mistake is to expect this result to be 30:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>A common mistake is to expect this result to be 30:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 10;
+var y = 20;
+document.getElementById("demo").innerHTML =
+"The result is: " + x + y;
+</script>
+
+</body>
+</html>
+
+A common mistake is to expect this result to be 102030:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>A common mistake is to expect this result to be 102030:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 10;
+var y = 20;
+var z = "30";
+var result = x + y + z;
+document.getElementById("demo").innerHTML = result;
+</script>
+
+</body>
+</html>
+
+The JavaScript compiler works from left to right.
+
+First 10 + 20 is added because x and y are both numbers.
+
+Then 30 + "30" is concatenated because z is a string.
+
+--------------------------------------------------------------------
+
+Numeric Strings
+JavaScript strings can have numeric content:
+
+var x = 100;         // x is a number
+
+var y = "100";       // y is a string
+JavaScript will try to convert strings to numbers in all numeric operations:
+
+This will work:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>JavaScript will try to convert strings to numbers in numeric operations:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = "100";
+var y = "10";
+var z = x / y;   
+document.getElementById("demo").innerHTML = z;
+</script>
+
+</body>
+</html>
+
+This will also work:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>JavaScript will try to convert strings to numbers in numeric operations:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = "100";
+var y = "10";
+var z = x * y;   
+document.getElementById("demo").innerHTML = z;
+</script>
+
+</body>
+</html>
+
+And this will work:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>JavaScript will try to convert strings to numbers in numeric operations:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = "100";
+var y = "10";
+var z = x - y;   
+document.getElementById("demo").innerHTML = z;
+</script>
+
+</body>
+</html>
+
+But this will not work:
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
