@@ -4904,6 +4904,2006 @@ document.getElementById("demo").innerHTML = z;
 
 But this will not work:
 
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>JavaScript will concatenate (not add) to strings:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = "100";
+var y = "10";
+var z = x + y;   
+document.getElementById("demo").innerHTML = z;
+</script>
+
+</body>
+</html>
+
+In the last example JavaScript uses the + operator to concatenate the strings.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+NaN - Not a Number
+NaN is a JavaScript reserved word indicating that a number is not a legal number.
+
+Trying to do arithmetic with a non-numeric string will result in NaN (Not a Number):
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>A number divided by a non-numeric string becomes NaN (Not a Number):</p>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = 100 / "Apple";
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------
+You can use the global JavaScript function isNaN() to find out if a value is a number:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>You can use the global JavaScript function isNaN() to find out if a value is a number:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 100 / "Apple";
+document.getElementById("demo").innerHTML = isNaN(x);
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+Watch out for NaN. If you use NaN in a mathematical operation, the result will also be NaN:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>If you use NaN in a mathematical operation, the result will also be NaN:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = NaN;
+var y = 5;
+document.getElementById("demo").innerHTML = x + y;
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------------------------------
+Or the result might be a concatenation:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>If you use NaN in a mathematical operation, the result can be a concatenation:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = NaN;
+var y = "5";
+document.getElementById("demo").innerHTML = x + y;
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------
+NaN is a number: typeof NaN returns number:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>The typeof NaN is number:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = NaN;
+document.getElementById("demo").innerHTML = typeof x;
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------------
+Infinity
+Infinity (or -Infinity) is the value JavaScript will return if you calculate a number outside the largest possible number.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Infinity is returned if you calculate a number outside the largest possible number:</p>
+
+<p id="demo"></p>
+
+<script>
+var myNumber = 2; 
+var txt = "";
+while (myNumber != Infinity) {
+   myNumber = myNumber * myNumber;
+   txt = txt + myNumber + "<br>";
+}
+document.getElementById("demo").innerHTML = txt;
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------------------------------------------------------
+
+Division by 0 (zero) also generates Infinity:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Division by zero generates Infinity;</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 2/0;
+var y = -2/0;
+document.getElementById("demo").innerHTML = x + "<br>" + y;
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------------------
+
+Infinity is a number: typeof Infinity returns number.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Infinity is a number:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = Infinity;
+document.getElementById("demo").innerHTML = typeof x;
+</script>
+
+</body>
+</html>
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Numeric constants, preceded by 0x, are interpreted as hexadecimal:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 0xFF;
+document.getElementById("demo").innerHTML = "0xFF = " + x;
+</script>
+
+</body>
+</html>
+
+Never write a number with a leading zero (like 07).
+Some JavaScript versions interpret numbers as octal if they are written with a leading zero.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+By default, JavaScript displays numbers as base 10 decimals.
+
+But you can use the toString() method to output numbers as base 16 (hex), base 8 (octal), or base 2 (binary).
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>The toString() method can output numbers as base 16 (hex), base 8 (octal), or base 2 (binary).</p>
+
+<p id="demo"></p>
+
+<script>
+var myNumber = 128;
+document.getElementById("demo").innerHTML = "128 = " + 
+myNumber + " Decimal, " +
+myNumber.toString(16) + " Hexadecimal, " +
+myNumber.toString(8) + " Octal, " +
+myNumber.toString(2) + " Binary."
+</script>
+
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Numbers Can be Objects
+Normally JavaScript numbers are primitive values created from literals:
+
+var x = 123;
+
+But numbers can also be defined as objects with the keyword new:
+
+var y = new Number(123);
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Numbers</h2>
+
+<p>Numbers can be typeof number or typeof object.</p>
+
+<p>There is no need to create numbers as objects.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 123;
+var y = new Number(123);
+document.getElementById("demo").innerHTML = typeof x + "<br>" + typeof y;
+</script>
+
+</body>
+</html>
+
+Do not create Number objects. It slows down execution speed.
+The new keyword complicates the code. This can produce some unexpected results:
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+When using the == operator, equal numbers are equal:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Never create numbers as objects.</p>
+<p>Numbers and objects cannot be safely compared.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 500;              // x is a number
+var y = new Number(500);  // y is an object
+document.getElementById("demo").innerHTML = (x==y);
+</script>
+
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Never create numbers as objects.</p>
+<p>Numbers and objects cannot be safely compared.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 500;              // x is a number
+var y = new Number(500);  // y is an object
+document.getElementById("demo").innerHTML = (x===y);
+</script>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Or even worse. Objects cannot be compared:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Never create numbers as objects.</p>
+<p>JavaScript objects cannot be compared.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = new Number(500);  // x is an object
+var y = new Number(500);  // y is an object
+document.getElementById("demo").innerHTML = (x==y);
+</script>
+
+</body>
+</html>
+
+Note the difference between (x==y) and (x===y).
+Comparing two JavaScript objects will always return false.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Number methods help you work with numbers.
+
+Number Methods and Properties
+Primitive values (like 3.14 or 2014), cannot have properties and methods (because they are not objects).
+
+But with JavaScript, methods and properties are also available to primitive values, because JavaScript treats primitive values as objects when executing methods and properties.
+
+The toString() Method
+toString() returns a number as a string.
+
+All number methods can be used on any type of numbers (literals, variables, or expressions):
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The JavaScript toString() Method</h2>
+
+<p>The toString() method converts a number to a string.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 123;
+document.getElementById("demo").innerHTML =
+    x.toString() + "<br>" +
+   (123).toString() + "<br>" +
+   (100 + 23).toString();
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------------
+
+The toExponential() Method
+toExponential() returns a string, with a number rounded and written using exponential notation.
+
+A parameter defines the number of characters behind the decimal point:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The toExponential() method returns a string, with the number rounded and written using exponential notation.</p>
+
+<p>An optional parameter defines the number of digits behind the decimal point.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 9.656;
+document.getElementById("demo").innerHTML =
+    x.toExponential() + "<br>" + 
+    x.toExponential(2) + "<br>" + 
+    x.toExponential(4) + "<br>" + 
+    x.toExponential(6);
+</script>
+
+</body>
+</html>
+
+The parameter is optional. If you don't specify it, JavaScript will not round the number.
+-------------------------------------------------------------------------------------------------------------------------------
+
+The toFixed() Method
+toFixed() returns a string, with the number written with a specified number of decimals:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The toFixed() method rounds a number to a given number of digits.</p>
+<p>For working with money, toFixed(2) is perfect.</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 9.656;
+document.getElementById("demo").innerHTML =
+    x.toFixed(0) + "<br>" +
+    x.toFixed(2) + "<br>" +
+    x.toFixed(4) + "<br>" +
+    x.toFixed(6);
+</script>
+
+</body>
+</html>
+
+toFixed(2) is perfect for working with money.
+------------------------------------------------------------------------------------------------------------------------------------
+
+The toPrecision() Method
+toPrecision() returns a string, with a number written with a specified length:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The toPrecision() method returns a string, with a number written with a specified length:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = 9.656;
+document.getElementById("demo").innerHTML = 
+    x.toPrecision() + "<br>" +
+    x.toPrecision(2) + "<br>" +
+    x.toPrecision(4) + "<br>" +
+    x.toPrecision(6);    
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------------------
+
+The valueOf() Method
+valueOf() returns a number as a number.
+
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+
+<script>
+var x = 123;
+
+document.getElementById("demo").innerHTML = 
+    x.valueOf() + "<br>" +
+    (123).valueOf() + "<br>" +
+    (100 + 23).valueOf();
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------------
+In JavaScript, a number can be a primitive value (typeof = number) or an object (typeof = object).
+
+The valueOf() method is used internally in JavaScript to convert Number objects to primitive values.
+
+There is no reason to use it in your code.
+
+All JavaScript data types have a valueOf() and a toString() method.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Converting Variables to Numbers
+There are 3 JavaScript methods that can be used to convert variables to numbers:
+
+The Number() method
+The parseInt() method
+The parseFloat() method
+These methods are not number methods, but global JavaScript methods.
+
+Global Methods
+JavaScript global methods can be used on all JavaScript data types.
+
+These are the most relevant methods, when working with numbers:
+
+Method	Description
+Number()	Returns a number, converted from its argument.
+parseFloat()	Parses its argument and returns a floating point number
+parseInt()	Parses its argument and returns an integer
+The Number() Method
+Number() can be used to convert JavaScript variables to numbers:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Number Methods</h2>
+
+<p>The JavaScript function Number() converts variables to numbers:</p>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = 
+    Number(true) + "<br>" +
+    Number(false) + "<br>" +
+    Number("  10") + "<br>" +
+    Number("10  ") + "<br>" +
+    Number("10 6") + "<br>" + 
+    Number("John");
+</script>
+
+</body>
+</html>
+
+If the number cannot be converted, NaN (Not a Number) is returned.
+---------------------------------------------------------------------------------------------------------------------------------
+
+The Number() Method Used on Dates
+Number() can also convert a date to a number:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Number Methods</h2>
+
+<p>The JavaScript function Number() can convert a date to a number:</p>
+
+<p id="demo"></p>
+
+<script>
+var x = new Date("2017-09-30");
+document.getElementById("demo").innerHTML = Number(x); 
+</script>
+
+</body>
+</html>
+
+The Number() method above returns the number of milliseconds since 1.1.1970.
+----------------------------------------------------------------------------------------------------------------------------------
+
+The parseInt() Method
+parseInt() parses a string and returns a whole number. Spaces are allowed. Only the first number is returned:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The global JavaScript function parseInt() converts strings to numbers:</p>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = 
+    parseInt("10") + "<br>" +
+    parseInt("10.33") + "<br>" +
+    parseInt("10 6") + "<br>" +    
+    parseInt("10 years") + "<br>" +    
+    parseInt("years 10");    
+</script>
+
+</body>
+</html>
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+The parseFloat() Method
+parseFloat() parses a string and returns a number. Spaces are allowed. Only the first number is returned:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The global JavaScript function parseFloat() converts strings to numbers:</p>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = 
+    parseFloat("10") + "<br>" +
+    parseFloat("10.33") + "<br>" +
+    parseFloat("10 6") + "<br>" +    
+    parseFloat("10 years") + "<br>" +
+    parseFloat("years 10");        
+</script>
+
+</body>
+</html>
+
+If the number cannot be converted, NaN (Not a Number) is returned.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Number Properties
+Property	Description
+MAX_VALUE	Returns the largest number possible in JavaScript
+MIN_VALUE	Returns the smallest number possible in JavaScript
+NEGATIVE_INFINITY	Represents negative infinity (returned on overflow)
+NaN	Represents a "Not-a-Number" value
+POSITIVE_INFINITY	Represents infinity (returned on overflow)
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = Number.MAX_VALUE;
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+Number properties belongs to the JavaScript's number object wrapper called Number.
+
+These properties can only be accessed as Number.MAX_VALUE.
+
+Using myNumber.MAX_VALUE, where myNumber is a variable, expression, or value, will return undefined:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var x = 6;
+document.getElementById("demo").innerHTML = x.MAX_VALUE;
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------
+JavaScript arrays are used to store multiple values in a single variable.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p id="demo"></p>
+
+<script>
+var cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars;
+</script>
+
+</body>
+</html>
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+What is an Array?
+An array is a special variable, which can hold more than one value at a time.
+
+If you have a list of items (a list of car names, for example), storing the cars in single variables could look like this:
+
+var car1 = "Saab";
+var car2 = "Volvo";
+var car3 = "BMW";
+However, what if you want to loop through the cars and find a specific one? And what if you had not 3 cars, but 300?
+
+The solution is an array!
+
+An array can hold many values under a single name, and you can access the values by referring to an index number.
+
+Creating an Array
+Using an array literal is the easiest way to create a JavaScript Array.
+
+Syntax:
+
+var array_name = [item1, item2, ...];       
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p id="demo"></p>
+
+<script>
+var cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars;
+</script>
+
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Spaces and line breaks are not important. A declaration can span multiple lines:
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p id="demo"></p>
+
+<script>
+var cars = [
+    "Saab",
+    "Volvo",
+    "BMW"
+];
+document.getElementById("demo").innerHTML = cars;
+</script>
+
+</body>
+</html>
+
+Putting a comma after the last element (like "BMW",)  is inconsistent across browsers.
+
+IE 8 and earlier will fail.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Using the JavaScript Keyword new
+The following example also creates an Array, and assigns values to it:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p id="demo"></p>
+
+<script>
+var cars = new Array("Saab", "Volvo", "BMW");
+document.getElementById("demo").innerHTML = cars;
+</script>
+
+</body>
+</html>
+
+The two examples above do exactly the same. There is no need to use new Array().
+For simplicity, readability and execution speed, use the first one (the array literal method).
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Access the Elements of an Array
+You refer to an array element by referring to the index number.
+
+This statement accesses the value of the first element in cars:
+
+var name = cars[0];
+This statement modifies the first element in cars:
+
+cars[0] = "Opel";
+-------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>JavaScript array elements are accesses using numeric indexes (starting from 0).</p>
+
+<p id="demo"></p>
+
+<script>
+var cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars[0];
+</script>
+
+</body>
+</html>
+
+[0] is the first element in an array. [1] is the second. Array indexes start with 0.
+
+Access the Full Array
+With JavaScript, the full array can be accessed by referring to the array name:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p id="demo"></p>
+
+<script>
+var cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars;
+</script>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Arrays are Objects
+Arrays are a special type of objects. The typeof operator in JavaScript returns "object" for arrays.
+
+But, JavaScript arrays are best described as arrays.
+
+Arrays use numbers to access its "elements". In this example, person[0] returns John:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>Arrays use numbers to access its elements.</p>
+
+<p id="demo"></p>
+
+<script>
+var person = ["John", "Doe", 46];
+document.getElementById("demo").innerHTML = person[0];
+</script>
+
+</body>
+</html>
+
+-------------------------------------------------------------------------------------------------------------------------------
+Objects use names to access its "members". In this example, person.firstName returns John:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Objects</h2>
+<p>JavaScript uses names to access object properties.</p>
+<p id="demo"></p>
+
+<script>
+var person = {firstName:"John", lastName:"Doe", age:46};
+document.getElementById("demo").innerHTML = person["firstName"];
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Array Elements Can Be Objects
+JavaScript variables can be objects. Arrays are special kinds of objects.
+
+Because of this, you can have variables of different types in the same Array.
+
+You can have objects in an Array. You can have functions in an Array. You can have arrays in an Array:
+
+myArray[0] = Date.now;
+myArray[1] = myFunction;
+myArray[2] = myCars;
+Array Properties and Methods
+The real strength of JavaScript arrays are the built-in array properties and methods:
+
+Examples
+var x = cars.length;   // The length property returns the number of elements
+var y = cars.sort();   // The sort() method sorts arrays
+Array methods are covered in the next chapters.
+
+The length Property
+The length property of an array returns the length of an array (the number of array elements).
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+<p>The length property returns the length of an array.</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.length;
+</script>
+
+</body>
+</html>
+
+---------------------------------------------------------------------------------------------------------------------------------
+The length property is always one more than the highest array index.
+
+Looping Array Elements
+The best way to loop through an array, is using a "for" loop:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>The best way to loop through an array is using a standard for loop:</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits, text, fLen, i;
+
+fruits = ["Banana", "Orange", "Apple", "Mango"];
+fLen = fruits.length;
+text = "<ul>";
+for (i = 0; i < fLen; i++) {
+    text += "<li>" + fruits[i] + "</li>";
+}
+text += "</ul>";
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------
+Adding Array Elements
+The easiest way to add a new element to an array is using the push method:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>The push method appends a new element to an array.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+
+function myFunction() {
+    fruits.push("Lemon");
+    document.getElementById("demo").innerHTML = fruits;
+}
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------
+New element can also be added to an array using the length property:
+----------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>The length property provides an easy way to append new elements to an array without using the push() method.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+
+function myFunction() {
+    fruits[fruits.length] = "Lemon";
+    document.getElementById("demo").innerHTML = fruits;
+}
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------------------
+
+WARNING !
+Adding elements with high indexes can create undefined "holes" in an array:
+---------------------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>Adding elements with high indexes can create undefined "holes" in an array.</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits, text, fLen, i;
+fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits[6] = "Lemon";
+
+fLen = fruits.length;
+text = "";
+for (i = 0; i < fLen; i++) {
+    text += fruits[i] + "<br>";
+}
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------------------------------
+
+Associative Arrays
+Many programming languages support arrays with named indexes.
+
+Arrays with named indexes are called associative arrays (or hashes).
+
+JavaScript does not support arrays with named indexes.
+
+In JavaScript, arrays always use numbered indexes.  
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p id="demo"></p>
+
+<script>
+var person = [];
+person[0] = "John";
+person[1] = "Doe";
+person[2] = 46; 
+document.getElementById("demo").innerHTML =
+person[0] + " " + person.length;
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------
+
+WARNING !!
+If you use named indexes, JavaScript will redefine the array to a standard object.
+After that, some array methods and properties will produce incorrect results.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>If you use a named index when accessing an array, JavaScript will redefine the array to a standard object, and some array methods and properties will produce undefined or incorrect results.</p>
+
+<p id="demo"></p>
+
+<script>
+var person = [];
+person["firstName"] = "John";
+person["lastName"] = "Doe";
+person["age"] = 46; 
+document.getElementById("demo").innerHTML =
+person[0] + " " + person.length;
+</script>
+
+</body>
+</html>
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+The Difference Between Arrays and Objects
+In JavaScript, arrays use numbered indexes.  
+
+In JavaScript, objects use named indexes.
+
+Arrays are a special kind of objects, with numbered indexes.
+
+When to Use Arrays. When to use Objects.
+JavaScript does not support associative arrays.
+You should use objects when you want the element names to be strings (text).
+You should use arrays when you want the element names to be numbers.
+Avoid new Array()
+There is no need to use the JavaScript's built-in array constructor new Array().
+
+Use [] instead.
+
+These two different statements both create a new empty array named points:
+
+var points = new Array();         // Bad
+var points = [];                  // Good 
+These two different statements both create a new array containing 6 numbers:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>Avoid using new Array(). Use [] instead.</p>
+
+<p id="demo"></p>
+
+<script>
+//var points = new Array(40, 100, 1, 5, 25, 10);
+var points = [40, 100, 1, 5, 25, 10];
+document.getElementById("demo").innerHTML = points[0];    
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------------
+The new keyword only complicates the code. It can also produce some unexpected results:
+
+var points = new Array(40, 100);  // Creates an array with two elements (40 and 100)
+
+What if I remove one of the elements?
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>Avoid using new Array().</p>
+
+<p id="demo"></p>
+
+<script>
+var points = new Array(40);
+document.getElementById("demo").innerHTML = points[0];    
+</script>
+
+</body>
+</html>
+
+-------------------------------------------------------------------------------------------------------------------------------
+How to Recognize an Array
+A common question is: How do I know if a variable is an array?
+
+The problem is that the JavaScript operator typeof returns "object":
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>The typeof operator, when used on an array, returns object:</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = typeof fruits;
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+
+The typeof operator returns object because a JavaScript array is an object.
+
+Solution 1:
+To solve this problem ECMAScript 5 defines a new method Array.isArray():
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>The new ECMASCRIPT 5 method isArray returns true when used on an array:</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = Array.isArray(fruits);
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------
+
+The problem with this solution is that ECMAScript 5 is not supported in older browsers.
+
+Solution 2:
+To solve this problem you can create your own isArray() function:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>This "home made" isArray() function returns true when used on an array:</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = isArray(fruits);
+
+function isArray(myArray) {
+    return myArray.constructor.toString().indexOf("Array") > -1;
+}
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------------------
+The function above always returns true if the argument is an array.
+
+Or more precisely: it returns true if the object prototype contains the word "Array".
+
+Solution 3:
+The instanceof operator returns true if an object is created by a given constructor:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>The instanceof operator returns true when used on an array:</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits instanceof Array;
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Converting Arrays to Strings
+The JavaScript method toString() converts an array to a string of (comma separated) array values.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>toString()</h2>
+
+<p>The toString() method returns an array as a comma separated string:</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.toString();
+</script>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Popping and Pushing
+When you work with arrays, it is easy to remove elements and add new elements.
+
+This is what popping and pushing is:
+
+Popping items out of an array, or pushing items into an array.
+
+Popping
+The pop() method removes the last element from an array:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<h2>pop()</h2>
+
+<p>The pop() method removes the last element from an array.</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo1").innerHTML = fruits;
+fruits.pop();
+document.getElementById("demo2").innerHTML = fruits;
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------
+The pop() method returns the value that was "popped out":
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>pop()</h2>
+
+<p>The pop() method removes the last element from an array.</p>
+
+<p>The return value of the pop() method is the removed item.</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo1").innerHTML = fruits;
+document.getElementById("demo2").innerHTML = fruits.pop();
+document.getElementById("demo3").innerHTML = fruits;
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------------------------------------------------------
+
+Pushing
+The push() method adds a new element to an array (at the end):
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>push()</h2>
+
+<p>The push() method appends a new element to an array.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+
+function myFunction() {
+    fruits.push("Kiwi");
+    document.getElementById("demo").innerHTML = fruits;
+}
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+The push() method returns the new array length:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>push()</h2>
+
+<p>The push() method returns the new array length.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo1").innerHTML = fruits;
+
+function myFunction() {
+    document.getElementById("demo2").innerHTML = fruits.push("Kiwi");
+    document.getElementById("demo1").innerHTML = fruits;
+}
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------------------------------------------------------
+Shifting Elements
+Shifting is equivalent to popping, working on the first element instead of the last.
+
+The shift() method removes the first array element and "shifts" all other elements to a lower index.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>shift()</h2>
+
+<p>The shift() method removes the first element of an array (and "shifts" all other elements to the left):</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo1").innerHTML = fruits;
+fruits.shift();
+document.getElementById("demo2").innerHTML = fruits;
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------------------------
+The shift() method returns the string that was "shifted out":
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>shift()</h2>
+
+<p>The shift() method returns the element that was shifted out.</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo1").innerHTML = fruits;
+document.getElementById("demo2").innerHTML = fruits.shift();
+document.getElementById("demo3").innerHTML = fruits;
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------------
+The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>unshift()</h2>
+
+<p>The unshift() method adds new elements to the beginning of an array.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+
+function myFunction() {
+    fruits.unshift("Lemon");
+    document.getElementById("demo").innerHTML = fruits;
+}
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------------------
+The unshift() method returns the new array length.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>unshift()</h2>
+
+<p>The unshift() method returns the length of the new array:</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo1").innerHTML = fruits;
+document.getElementById("demo2").innerHTML = fruits.unshift("Lemon");
+document.getElementById("demo3").innerHTML = fruits;
+</script>
+
+<p><b>Note:</b> The unshift() method does not work properly in Internet Explorer 8 and earlier, the values will be inserted, but the return value will be <em>undefined</em>.</p>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------------
+Changing Elements
+Array elements are accessed using their index number:
+
+Array indexes start with 0. [0] is the first array element, [1] is the second, [2] is the third ...
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<p>Array elements are accessed using their index number:</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo1").innerHTML = fruits;
+fruits[0] = "Kiwi";
+document.getElementById("demo2").innerHTML = fruits;
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------------
+
+The length property provides an easy way to append a new element to an array:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<p>The length property provides an easy way to append new elements to an array without using the push() method.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+
+function myFunction() {
+    fruits[fruits.length] = "Kiwi";
+    document.getElementById("demo").innerHTML = fruits;
+}
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Deleting Elements
+Since JavaScript arrays are objects, elements can be deleted by using the JavaScript operator delete:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<p>Deleting elements leaves undefined holes in an array.</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo1").innerHTML =
+"The first fruit is: " + fruits[0];
+delete fruits[0];
+document.getElementById("demo2").innerHTML =
+"The first fruit is: " + fruits[0];
+</script>
+
+</body>
+</html>
+
+---------------------------------------------------------------------------------------------------------------------------------
+Using delete may leave undefined holes in the array. Use pop() or shift() instead.
+
+---------------------------------------------------------------------------------------------------
+Splicing an Array
+The splice() method can be used to add new items to an array:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<h2>splice()</h2>
+
+<p>The splice() method adds new elements to an array.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+function myFunction() {
+    fruits.splice(2, 0, "Lemon", "Kiwi");
+    document.getElementById("demo").innerHTML = fruits;
+}
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------------------------------------------------------------
+
+The first parameter (2) defines the position where new elements should be added (spliced in).
+
+The second parameter (0) defines how many elements should be removed.
+
+The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.
+
+Using splice() to Remove Elements
+With clever parameter setting, you can use splice() to remove elements without leaving "holes" in the array:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<h2>splice()</h2>
+
+<p>The splice() methods can be used to remove array elements.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+function myFunction() {
+    fruits.splice(0, 1);
+    document.getElementById("demo").innerHTML = fruits;
+}
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------------------------------------
+The first parameter (0) defines the position where new elements should be added (spliced in).
+
+The second parameter (1) defines how many elements should be removed.
+
+The rest of the parameters are omitted. No new elements will be added.
+------------------------------------------------------------------------------------------------------------------------------------
+Merging (Concatenating) Arrays
+The concat() method creates a new array by merging (concatenating) existing arrays:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<h2>concat()</h2>
+
+<p>The concat() method is used to merge (concatenate) arrays:</p>
+
+<p id="demo"></p>
+
+<script>
+var myGirls = ["Cecilie", "Lone"];
+var myBoys = ["Emil", "Tobias", "Linus"];
+var myChildren = myGirls.concat(myBoys);
+
+document.getElementById("demo").innerHTML = myChildren;
+</script>
+
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------------------------------------------
+The concat() method does not change the existing arrays. It always returns a new array.
+
+The concat() method can take any number of array arguments:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<h2>concat()</h2>
+
+<p>The concat() method is used to merge (concatenate) arrays:</p>
+
+<p id="demo"></p>
+
+<script>
+var arr1 = ["Cecilie", "Lone"];
+var arr2 = ["Emil", "Tobias", "Linus"];
+var arr3 = ["Robin", "Morgan"];
+
+var myChildren = arr1.concat(arr2, arr3); 
+
+document.getElementById("demo").innerHTML = myChildren;
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------------
+
+The concat() method can also take values as arguments:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<h2>concat()</h2>
+
+<p>The concat() method can also merge values to arrays:</p>
+
+<p id="demo"></p>
+
+<script>
+var arr1 = ["Cecilie", "Lone"];
+var myChildren = arr1.concat(["Emil", "Tobias", "Linus"]); 
+document.getElementById("demo").innerHTML = myChildren;
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------------------------------------------------------------------------
+Slicing an Array
+The slice() method slices out a piece of an array into a new array.
+
+This example slices out a part of an array starting from array element 1 ("Orange"):
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+
+<h2>slice()</h2>
+
+<p>This example slices out a part of an array starting from array element 1 ("Orange"):</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+var citrus = fruits.slice(1);
+document.getElementById("demo").innerHTML = fruits + "<br><br>" + citrus;
+</script>
+
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------------------------------
+The slice() method creates a new array. It does not remove any elements from the source array.
+
+This example slices out a part of an array starting from array element 3 ("Apple"):
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>slice()</h2>
+
+<p>This  example slices out a part of an array starting from array element 3 ("Apple")</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+var citrus = fruits.slice(3);
+document.getElementById("demo").innerHTML = fruits + "<br><br>" + citrus;
+</script>
+
+</body>
+</html>
+-------------------------------------------------------------------------------------------------------------------------
+The slice() method can take two arguments like slice(1, 3).
+
+The method then selects elements from the start argument, and up to (but not including) the end argument.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>slice()</h2>
+
+<p>When the slice() method is given two arguments, it selects array elements from the start argument, and up to (but not included) the end argument:</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+var citrus = fruits.slice(1,3);
+document.getElementById("demo").innerHTML = fruits + "<br><br>" + citrus;
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------------
+
+If the end argument is omitted, like in the first examples, the slice() method slices out the rest of the array.
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>slice()</h2>
+
+<p>This example slices out a part of an array starting from array element 2 ("Lemon"):</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+var citrus = fruits.slice(2);
+document.getElementById("demo").innerHTML = fruits + "<br><br>" + citrus;
+</script>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Automatic toString()
+JavaScript automatically converts an array to a comma separated string when a primitive value is expected.
+
+This is always the case when you try to output an array.
+
+These two examples will produce the same result:
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>toString()</h2>
+
+<p>The toString() method returns an array as a comma separated string:</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.toString();
+</script>
+
+</body>
+</html>
+
+------------------------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<p>JavaScript automatically converts an array to a comma separated string when a simple value is expected:</p>
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+</script>
+
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------------
+
+All JavaScript objects have a toString() method.
+
+Finding Max and Min Values in an Array
+There are no built-in functions for finding the highest or lowest value in a JavaScript array.
+
+You will learn how you solve this problem in the next chapter of this tutorial.
+
+Sorting Arrays
+Sorting arrays are covered in the next chapter of this tutorial.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
